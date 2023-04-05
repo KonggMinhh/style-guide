@@ -1,0 +1,194 @@
+//----- form-row -----------------------------------
+
+.#{$class-prefix}form-row {
+    --#{$var-prefix}form-row-margin-bottom: #{$form-row-margin-bottom};
+    --#{$var-prefix}form-row-padding-y: 0;
+    @extend %flex;
+    margin-bottom: var(--#{$var-prefix}form-row-margin-bottom);
+    padding: var(--#{$var-prefix}form-row-padding-y) 0;
+    .#{$class-prefix}col-form-label {
+        flex: 0 0 auto;
+        margin-right: var(--#{$var-prefix}spacer-md);
+    }
+    .#{$class-prefix}col-form-control-plaintext {
+        .#{$class-prefix}tag {
+            margin-top: calc(-1 *(var(--#{$var-prefix}tag-height) -  var(--#{$var-prefix}input-line-height)) / 2);
+        }
+    }
+}
+
+.#{$class-prefix}form-row-sm {
+
+    .#{$class-prefix}col-form-label {
+        --#{$var-prefix}input-padding-y: #{$input-padding-y-sm + $input-border-width};
+    }
+
+    .#{$class-prefix}col-form-control .#{$class-prefix}form-control,
+    .#{$class-prefix}form-control-plaintext {
+        @extend %form-control-sm;
+    }
+    .#{$class-prefix}col-form-control .#{$class-prefix}form-control-line {
+        --#{$var-prefix}input-padding-x: 0;
+        --#{$var-prefix}input-border-radius: 0;
+    }
+    .#{$class-prefix}form-control-plaintext {
+        --#{$var-prefix}input-padding-x: 0;
+    }
+}
+
+.#{$class-prefix}form-row-lg {
+
+    .#{$class-prefix}col-form-label {
+        --#{$var-prefix}input-padding-y: #{$input-padding-y-lg + $input-border-width};
+    }
+
+    .#{$class-prefix}col-form-control .#{$class-prefix}form-control,
+    .#{$class-prefix}form-control-plaintext {
+        @extend %form-control-lg;
+    }
+    .#{$class-prefix}form-control-plaintext {
+        --#{$var-prefix}input-padding-x: 0;
+    }
+}
+
+.#{$class-prefix}form-group-inline {
+    @extend %flex;
+    align-items: flex-start;
+    >.form-group-row {
+        flex: 1;
+    }
+}
+
+//----- form-icons ---------------------------------------
+%icon-mask {
+    --#{$var-prefix}icon-mask-color: #{$icon-mask-color};
+    --#{$var-prefix}icon-size: var(--#{$var-prefix}icon-size-md);
+    @extend %flex-center;
+    color: var(--#{$var-prefix}icon-mask-color);
+    font-size: var(--#{$var-prefix}icon-size);
+    text-align: center;
+    @include box-size(var(--#{$var-prefix}icon-size));    
+}
+.icon-mask {
+    @extend %icon-mask;
+
+    @each $size, $value in $icon-sizes {
+        &.icon-#{$size} {
+            --#{$var-prefix}icon-size: var(--#{$var-prefix}icon-size-#{$size});
+        }
+    }
+}
+
+//----- form-labels -----------------------------------
+// Giá trị từ [80 -> 200]
+[class*="form-labels-"] {
+    .#{$class-prefix}col-form-label {        
+        flex: 0 0 var(--#{$var-prefix}label-width);
+        max-width: var(--#{$var-prefix}label-width);
+    }
+
+    .#{$class-prefix}col-form-control,
+    .#{$class-prefix}form-control-plaintext {
+        flex: 1 1 auto;
+    }
+}
+
+@each $space in $form-labels-width {
+    .#{$class-prefix}form-labels-#{$space} {
+        --#{$var-prefix}label-width: #{$space*0.1 + "rem"};
+    }
+}
+
+//----- form-output -----------------------------------
+// Giá trị từ [50 -> 100]
+[class*="form-controls-"] {
+    .#{$class-prefix}col-form-label {        
+        flex: 1 1 auto; 
+    }
+    .#{$class-prefix}col-form-control,
+    .#{$class-prefix}form-control-plaintext {
+        flex: 0 0 var(--#{$var-prefix}form-control-width);
+        max-width: var(--#{$var-prefix}form-control-width);        
+    }    
+}
+@for $i from 5 through 10 {
+    .#{$class-prefix}form-controls-#{$i*10} {
+        --#{$var-prefix}form-control-width: #{$i + "rem"};
+    }
+}
+
+//----- Input group ----------------------------------
+.#{$class-prefix}input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+
+    >.#{$class-prefix}group-component,
+    >.#{$class-prefix}form-control,
+    >.#{$class-prefix}form-control-wrapper {
+        position: relative;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+        margin-bottom: 0;
+        z-index: $zindex-bottom;
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:active,
+        &.is-active {
+            z-index: $zindex-middle;
+        }       
+    }
+       > * + .#{$class-prefix}group-component,
+       > * + .#{$class-prefix}btn,
+       > * + .#{$class-prefix}input-group-text,
+       > * + .#{$class-prefix}form-control,
+       > * + .#{$class-prefix}form-control-wrapper {
+            margin-left: -$input-border-width;
+        }
+    
+    .#{$class-prefix}btn {
+        position: relative;
+        z-index: $zindex-bottom;
+        &:hover,
+        &:focus {
+          z-index: $zindex-middle;
+        }
+      }
+
+    >:first-child:not(:last-child) {
+        @include border-right-radius(0)
+    }
+
+    >:last-child:not(:first-child) {
+        @include border-left-radius(0)
+    }
+
+    >:not(:first-child):not(:last-child) {
+        @include border-radius(0)
+    }    
+}
+
+.#{$class-prefix}input-group-text {
+    @extend %form-control;
+    width: auto;
+    display: flex;
+    align-items: center; 
+}
+
+.#{$class-prefix}form-control-prefix,
+.#{$class-prefix}form-control-suffix {
+    display: flex;
+    align-items: center;
+}
+
+.#{$class-prefix}form-control-prefix {   
+    margin-right: var(--#{$var-prefix}spacer-md);
+}
+
+.#{$class-prefix}form-control-suffix {
+    margin-left: var(--#{$var-prefix}spacer-md);
+}

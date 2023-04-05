@@ -1,0 +1,386 @@
+[
+    {
+        "component": "Button-colors",
+        "category": "Buttons",
+        "description": "",
+        "backgroundColor": "",
+        "order": 3,
+        "has_js": "false"
+    },
+    {
+        "component": "Table-borderless",
+        "category": "Tables",
+        "description": "",
+        "backgroundColor": "",
+        "order": -3,
+        "has_js": "false"
+    },
+    {
+        "component": "Input-styles",
+        "category": "Form-controls",
+        "description": "Test",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "checkbox",
+        "category": "Form-check",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "radio",
+        "category": "Form-check",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Form-switch",
+        "category": "Form-check",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "false"
+    },
+    {
+        "component": "btn-check",
+        "category": "Form-check",
+        "description": "",
+        "backgroundColor": "",
+        "order": 4,
+        "has_js": "false"
+    },
+    {
+        "component": "color-palette",
+        "category": "Colors",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "date-picker",
+        "category": "Form-controls",
+        "description": "",
+        "backgroundColor": "",
+        "order": 4,
+        "has_js": "false"
+    },
+    {
+        "component": "Tag-styles",
+        "category": "Tags",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "dropdown-list",
+        "category": "Dropdowns",
+        "description": "",
+        "backgroundColor": "",
+        "order": -13,
+        "has_js": "false"
+    },
+    {
+        "component": "masked-textbox",
+        "category": "Form-controls",
+        "description": "",
+        "backgroundColor": "",
+        "order": 5,
+        "has_js": "false"
+    },
+    {
+        "component": "Button-group",
+        "category": "Buttons",
+        "description": "",
+        "backgroundColor": "",
+        "order": 5,
+        "has_js": "false"
+    },
+    {
+        "component": "Headings",
+        "category": "Typography",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Font-weight",
+        "category": "Typography",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Text-transform",
+        "category": "Typography",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "false"
+    },
+    {
+        "component": "Text-color",
+        "category": "Typography",
+        "description": "",
+        "backgroundColor": "",
+        "order": 3,
+        "has_js": "false"
+    },
+    {
+        "component": "Avatar-sizes",
+        "category": "Avatars",
+        "description": "",
+        "backgroundColor": "",
+        "order": -20,
+        "has_js": "false"
+    },
+    {
+        "component": "Badge-overview",
+        "category": "Badges",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Badge-components",
+        "category": "Badges",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Tag-types",
+        "category": "Tags",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Tag-colors",
+        "category": "Tags",
+        "description": "",
+        "backgroundColor": "",
+        "order": 3,
+        "has_js": "false"
+    },
+    {
+        "component": "Tag-sizes",
+        "category": "Tags",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "false"
+    },
+    {
+        "component": "Input-types",
+        "category": "Form-controls",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Input-sizes",
+        "category": "Form-controls",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "false"
+    },
+    {
+        "component": "Input-colors",
+        "category": "Form-controls",
+        "description": "",
+        "backgroundColor": "",
+        "order": 3,
+        "has_js": "false"
+    },
+    {
+        "component": "Dropdown-types",
+        "category": "Dropdowns",
+        "description": "",
+        "backgroundColor": "",
+        "order": -29,
+        "has_js": "false"
+    },
+    {
+        "component": "Form",
+        "category": "Form-controls",
+        "description": "",
+        "backgroundColor": "",
+        "order": 7,
+        "has_js": "false"
+    },
+    {
+        "component": "Alert-types",
+        "category": "Alerts",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Alert-styles",
+        "category": "Alerts",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Alert-sizes",
+        "category": "Alerts",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "false"
+    },
+    {
+        "component": "Alert-colors",
+        "category": "Alerts",
+        "description": "",
+        "backgroundColor": "",
+        "order": 3,
+        "has_js": "false"
+    },
+    {
+        "component": "Button-change-status",
+        "category": "Buttons",
+        "description": "",
+        "backgroundColor": "",
+        "order": 6,
+        "has_js": "false"
+    },
+    {
+        "component": "Button-types",
+        "category": "Buttons",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Button-styles",
+        "category": "Buttons",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Button-sizes",
+        "category": "Buttons",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "false"
+    },
+    {
+        "component": "Modal-types",
+        "category": "Modal",
+        "description": "",
+        "backgroundColor": "",
+        "order": -36,
+        "has_js": "false"
+    },
+    {
+        "component": "Form-number",
+        "category": "Form-controls",
+        "description": "",
+        "backgroundColor": "",
+        "order": 6,
+        "has_js": "false"
+    },
+    {
+        "component": "Divider-styles",
+        "category": "Divider",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Divider-colors",
+        "category": "Divider",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Button-block",
+        "category": "Buttons",
+        "description": "",
+        "backgroundColor": "",
+        "order": 4,
+        "has_js": "false"
+    },
+    {
+        "component": "Paragraphs",
+        "category": "Typography",
+        "description": "",
+        "backgroundColor": "",
+        "order": 4,
+        "has_js": "false"
+    },
+    {
+        "component": "Pagination-types",
+        "category": "Pagination",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Pagination-sizes",
+        "category": "Pagination",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Kiotviet",
+        "category": "Logos",
+        "description": "",
+        "backgroundColor": "",
+        "order": 0,
+        "has_js": "false"
+    },
+    {
+        "component": "Kiotviet-Software",
+        "category": "Logos",
+        "description": "",
+        "backgroundColor": "",
+        "order": 1,
+        "has_js": "false"
+    },
+    {
+        "component": "Kiotviet-Connect",
+        "category": "Logos",
+        "description": "",
+        "backgroundColor": "",
+        "order": 2,
+        "has_js": "false"
+    },
+    {
+        "component": "Kiotviet-Finance",
+        "category": "Logos",
+        "description": "",
+        "backgroundColor": "",
+        "order": 3,
+        "has_js": "false"
+    }
+]

@@ -1,0 +1,44 @@
+// ================================================
+// FRONTEND CORE
+// Authors: Front-end Team
+// ================================================
+
+//----- 1. Abstracts ------------------------------
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+//----- 2. Base -----------------------------------
+@import "base/root";
+@import "fonts/font";
+@import "base/reboot";
+@import "base/utilities";
+@import "base/common";
+
+//----- 3. Libraries ------------------------------
+@import "libraries/fontawesome"; 
+
+//----- 4. Layout ---------------------------------
+@import "layout/grid";
+
+//----- 5. Components -----------------------------
+@import "components/forms";
+@import "components/tags";
+@import "components/badge";
+@import "components/alert";
+@import "components/divider";
+@import "components/modal";
+@import "components/avatars";
+@import "components/dropdown";
+@import "libraries/kendo-ui";
+@import "components/popups";
+@import "components/pagination";
+@import "components/toasts";
+@import 'main';
+
+//----- 6.Pages -----------------------------------
+
+//----- 7.Others ----------------------------------
+@import "others/demo";
+@import "others/themes";
+

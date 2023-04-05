@@ -1,0 +1,40 @@
+$numberOfTheme: 9;
+@function theme($index) {
+    $result: #0090da;
+    @if $index == 1 {
+        $result: #0090da;
+    }@else if $index == 2 {
+        $result: #4b6580;
+    }@else if $index == 3 {
+        $result: #27ae61;
+    }@else if $index == 4 {
+        $result: #9b59b6;
+    }@else if $index == 5 {
+        $result: #d64457;
+    }@else if $index == 6 {
+        $result: #6e9992;
+    }@else if $index == 7 {
+        $result: #16a085;
+    }@else if $index == 8 {
+        $result: #e67E22;
+    }@else if $index == 9 {
+        $result: #d73b8c;
+    }
+    @return $result;
+}
+@mixin build-theme($numberOfTheme) {
+    @for $i from  1 through $numberOfTheme {
+        .theme-#{$i - 1} {                       
+            
+            @each $color, $value in color-map("primary", theme($i)) {
+              --#{$var-prefix}#{$color}: #{$value};              
+            }
+        }
+    }
+}
+
+
+@include build-theme($numberOfTheme);
+
+
+

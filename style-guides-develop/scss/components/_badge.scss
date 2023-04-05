@@ -1,0 +1,107 @@
+//===== Badges Virtual Class ==========================
+%badge {
+
+    --#{$var-prefix}badge-padding-x: #{$badge-padding-x};
+    --#{$var-prefix}badge-padding-y: #{$badge-padding-y};
+    --#{$var-prefix}badge-font-size: #{$badge-font-size};
+    --#{$var-prefix}badge-line-height: #{$badge-line-height};
+    --#{$var-prefix}badge-font-weight: var(--#{$var-prefix}font-weight-regular);
+    --#{$var-prefix}badge-color: var(--#{$var-prefix}body-color);
+    --#{$var-prefix}badge-bg: transparent;
+    --#{$var-prefix}badge-border-width: #{$badge-border-width};
+    --#{$var-prefix}badge-border-color: transparent;
+    --#{$var-prefix}badge-border-radius: #{$badge-border-radius};
+    --#{$var-prefix}badge-height: #{$badge-height};
+    --#{$var-prefix}badge-box-shadow: #{$badge-box-shadow};
+    --#{$var-prefix}badge-disabled-opacity: #{$badge-disabled-opacity};
+  
+    display: inline-block;
+    padding: var(--#{$var-prefix}badge-padding-y) var(--#{$var-prefix}badge-padding-x);
+    font-size: var(--#{$var-prefix}badge-font-size);
+    line-height: var(--#{$var-prefix}badge-line-height);
+    font-weight: var(--#{$var-prefix}badge-font-weight);
+    height: var(--#{$var-prefix}badge-height);
+    min-width: var(--#{$var-prefix}badge-height);
+    color: var(--#{$var-prefix}badge-color);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: var(--#{$var-prefix}badge-bg);
+    border: var(--#{$var-prefix}badge-border-width) solid var(--#{$var-prefix}badge-border-color);
+    @include border-radius(var(--#{$var-prefix}badge-border-radius));
+
+  }
+
+  %badge-sm {
+    @include badge-size($badge-padding-y-sm, $badge-padding-x-sm, $badge-font-size-sm, $badge-line-height-sm, $badge-height-sm);
+  } 
+
+  %badge-dot {
+    @include badge-size(0, 0, 0, 0, $badge-dot-height);
+  } 
+  
+  
+//----- Badges ----------------------------------------
+
+.#{$class-prefix}badge {
+    @extend %badge;
+}
+
+.#{$class-prefix}badge-wrapper {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    .#{$class-prefix}badge {
+        position: absolute;
+    }
+}
+.badge-top-left,
+.badge-top-right {
+    top: 0;
+    transform-origin: 100% 0;
+}
+.badge-bottom-left,
+.badge-bottom-right {
+    bottom: 0;
+    transform-origin: 0 100%;
+}
+.badge-top-left {    
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+.badge-top-right {    
+    right: 0;
+    transform: translate(50%, -50%);
+}
+.badge-bottom-right {    
+    right: 0;
+    transform: translate(50%, 50%);
+}
+.badge-bottom-left {    
+    left: 0;
+    transform: translate(-50%, 50%);
+}
+
+//----- Badges Sizes ------------------------------
+.#{$class-prefix}badge-sm { @extend %badge-sm; }
+.#{$class-prefix}badge-dot { @extend %badge-dot; }
+
+//----- Badges Colors -----------------------------
+@each $color, $value in $theme-colors {
+    %badge-#{$color},
+    .#{$class-prefix}badge-#{$color} {
+        @include badge-variant($color);
+    }
+
+    %badge-outline-#{$color},
+    .#{$class-prefix}badge-outline-#{$color} {
+        @include badge-outline-variant($color);
+    }
+
+    %badge-light-#{$color},
+    .#{$class-prefix}badge-light-#{$color} {
+        @include badge-light-variant($color);
+    }
+}

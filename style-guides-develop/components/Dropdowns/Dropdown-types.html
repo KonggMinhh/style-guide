@@ -1,0 +1,84 @@
+<!-- components/Dropdowns/Dropdown-types.html -->
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            <select id="required1" class="kv-form-control" multiple="multiple" data-placeholder="MultiSelect">
+			    <option>Steven White</option>
+			    <option>Nancy King</option>	
+			    <option>Nancy Davolio</option>
+			    <option>Robert Davolio</option>
+			    <option>Michael Leverling</option>
+			    <option>Andrew Callahan</option>
+			    <option>Michael Suyama</option>
+			    <option selected>Anne King</option>
+			    <option>Laura Peacock</option>
+			    <option>Robert Fuller</option>
+			    <option>Janet White</option>
+			    <option>Nancy Leverling</option>
+			    <option>Robert Buchanan</option>
+			    <option>Margaret Buchanan</option>
+			    <option selected>Andrew Fuller</option>
+			    <option>Anne Davolio</option>
+			    <option>Andrew Suyama</option>
+			    <option>Nige Buchanan</option>
+			    <option>Laura Fuller</option>
+			</select>
+        </div>
+        <div class="form-group">
+            <select id="cos-size" class="kv-form-control" placeholder="kendoComboBox">
+              <option>X-Small</option>
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+              <option>X-Large</option>
+              <option>2X-Large</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input id="countries1" class="kv-form-control kv-form-control-shadown"/>
+			<script>
+             $(document).ready(function () {
+                 $("#size").kendoDropDownList({
+                    filter: "startswith"
+                });
+                // create MultiSelect from select HTML element
+                var required = $("#required1").kendoMultiSelect().data("kendoMultiSelect");
+                var optional = $("#optional").kendoMultiSelect({
+                    autoClose: false
+                }).data("kendoMultiSelect");
+                    var data = [
+                            "Albania",
+                            "Andorra",
+                            "Armenia",
+                            "Austria",
+                            "Azerbaijan",
+                            "Belarus",
+                            "Belgium",
+                            "Bosnia & Herzegovina",
+                            "Bulgaria",
+                            "Croatia",
+                            "Cyprus",
+                            "Czech Republic"
+                        ];
+
+                    //create AutoComplete UI component
+                    $("#countries1").kendoAutoComplete({
+                        dataSource: data,
+                        filter: "startswith",
+                        placeholder: "AutoComplete",
+                        separator: ", ",
+                        template: $.proxy(kendo.template("#= formatValue(data, this.val()) #"), $("#countries"))
+                    });
+                });
+                function formatValue(itemText, text) {
+                      var textMatcher = new RegExp(text, "ig");
+            
+                      return itemText.replace(textMatcher, function(match) {
+                        return "<strong class='kv-color-primary'>" + match + "</strong>";
+                      });
+                    }
+                    $("#cos-size").kendoComboBox();
+        </script>
+        </div>
+    </div>
+</div>

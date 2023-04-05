@@ -1,0 +1,152 @@
+/* Demo **********/
+.component {
+    .kv-tag {
+        margin-bottom: 5px;
+    }
+}
+.row-logo {
+  .col-6 {
+      margin: 1rem 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  .logo-wrapper {
+      padding:1rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center; 
+      justify-content: center;
+  }
+  .logo-wrapper-negative {
+    background-color: #002957;
+  }
+}
+
+@each $color,
+$value in $theme-colors {
+  @for $i from 1 through 4 {
+
+    .color-darken-#{$color}#{$i*20} {
+      background-color: darken($value, $i*20%);
+      display: none;
+    }
+  }
+
+  @for $i from 1 through 4 {
+    .color-lighten-#{$color}#{$i*20} {
+      background-color: lighten($value, $i*20%);
+      display: none;
+    }
+  }
+
+  @for $i from 1 through 4 {
+
+    .color-darken-#{$color}-#{$i*20} {
+      background-color: shade-color($value, $i*18);
+      &::before {
+        content: '#{shade-color($value, $i*18)}';      
+      }
+    }
+  }
+
+  @for $i from 1 through 4 {
+    .color-lighten-#{$color}-#{$i*20} {
+      background-color: tint-color($value, $i*22);
+      &::before {
+        content: '#{tint-color($value, $i*22)}';      
+      }
+    }
+  }
+
+  @for $i from 1 through 4 {    
+    $percent: 8.5%;
+    .color-darken-#{$color}--#{$i*20} {
+      background-color: saturate(shade-color($value, $i*18), $percent);
+      &::before {
+        content: '#{saturate(shade-color($value, $i*18), $percent)}';      
+      }
+    }
+
+    .color-lighten-#{$color}--#{$i*20} {
+      background-color: saturate(tint-color($value, $i*22), $percent);
+      &::before {
+        content: '#{saturate(tint-color($value, $i*22), $percent)}';      
+      }
+    }
+  }
+}
+
+@each $color, $value in color-multi-map($theme-colors) {
+  .color-#{$color} {    
+    position: relative; 
+    &::before {
+      content: '#{$value}';      
+    }
+    &::after {
+      content: '--kv-#{$color}';
+      text-transform: lowercase;
+      padding: 2px;
+      display: none;
+      position: absolute;
+      top: -20px;
+      z-index: 1;
+      width: 150px;
+      text-align: center;
+      background-color: #000;
+      color: #fff;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      -ms-border-radius: 2px;
+      border-radius: 2px;      
+    }
+    &:hover {
+      &::after {
+        display: block;     
+      }
+    }
+    background-color: var(--#{$var-prefix}#{$color});
+  }
+}
+
+
+.box-color-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  @each $color, $value in $theme-colors {
+  .color-#{$color} {
+    &::before {
+      font-weight: var(--#{$var-prefix}font-weight-bold);
+    }
+    border-left: 2px solid rgba(var(--#{$var-prefix}white-rgb), .5);
+  } 
+}
+  >*{
+    width: 100%;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: black;
+    text-align: center;
+    //text-shadow: 0 1px 1px black;
+    &[class*="-500"] {
+      font-weight: bold;
+    }
+    &:nth-last-child(n + 8) {
+      color: white;
+    }
+  }
+}
+.transparent-bg {
+  background-color: #fff;
+  background-image: linear-gradient( 45deg,var(--#{$var-prefix}gray-200) 25%,transparent 25% ),linear-gradient( 135deg,var(--#{$var-prefix}gray-200) 25%,transparent 25% ),linear-gradient( 45deg,transparent 75%,var(--#{$var-prefix}gray-200) 75% ),linear-gradient( 135deg,transparent 75%,var(--#{$var-prefix}gray-200) 75% );
+  background-size: 20px 20px;
+  background-position: 0px 0px, 10px 0px, 10px -10px, 0px 10px;
+}
+
+/* End Demo **********/

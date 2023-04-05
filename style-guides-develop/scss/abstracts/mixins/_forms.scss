@@ -1,0 +1,27 @@
+//===== Forms ============================================
+
+//----- form-control -------------------------------------
+@mixin form-control-focus($inset: true) {
+    --#{$var-prefix}input-bg: transparent;
+    outline: 0;
+
+    @if $inset {
+        --#{$var-prefix}input-focus-box-shadow: #{$input-focus-box-shadow-inset-property} var(--#{$var-prefix}primary);
+        transform: translate3d(0, 0, 0);
+    }
+
+    @else {
+        --#{$var-prefix}input-border-color: var(--#{$var-prefix}primary);
+        --#{$var-prefix}input-focus-box-shadow: #{$input-focus-box-shadow-outset-property} rgba(var(--#{$var-prefix}primary-rgb), #{$input-focus-box-shadow-outset-opacity});      
+    }
+    box-shadow: var(--#{$var-prefix}input-focus-box-shadow);
+}
+
+@mixin input-size($padding-y, $padding-x, $font-size, $line-height, $min-height, $border-radius) {
+    --#{$var-prefix}input-padding-y: #{$padding-y};
+    --#{$var-prefix}input-padding-x: #{$padding-x};
+    --#{$var-prefix}input-font-size: #{$font-size};
+    --#{$var-prefix}input-line-height: #{$line-height};  
+    --#{$var-prefix}input-height: #{$min-height};
+    --#{$var-prefix}input-border-radius: #{$border-radius};
+  }

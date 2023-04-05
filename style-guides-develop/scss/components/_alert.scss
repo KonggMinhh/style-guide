@@ -1,0 +1,89 @@
+//===== Alerts Virtual Class ==========================
+%alert {    
+
+    --#{$var-prefix}alert-bg: transparent;
+    --#{$var-prefix}alert-padding-x: #{$alert-padding-x};
+    --#{$var-prefix}alert-padding-y: #{$alert-padding-y};
+    --#{$var-prefix}alert-margin-bottom: #{$alert-margin-bottom};
+    --#{$var-prefix}alert-font-size: #{$alert-font-size};
+    --#{$var-prefix}alert-line-height: #{$alert-line-height};
+    --#{$var-prefix}alert-font-weight: #{$alert-font-weight};
+    --#{$var-prefix}alert-color: var(--#{$var-prefix}body-color);
+    --#{$var-prefix}alert-border-color: transparent;
+    --#{$var-prefix}alert-border: #{$alert-border-width} solid var(--#{$var-prefix}alert-border-color);
+    --#{$var-prefix}alert-border-radius: #{$alert-border-radius};
+    --#{$var-prefix}alert-box-shadow: #{$alert-box-shadow-property} rgba(var(--#{$var-prefix}gray-rgb), #{$alert-box-shadow-opacity});
+    --#{$var-prefix}alert-icon-color: var(--#{$var-prefix}body-color);
+    --#{$var-prefix}alert-icon-font-size: #{$alert-icon-font-size};
+  
+    display: flex;
+    position: relative;
+    padding: var(--#{$var-prefix}alert-padding-y) var(--#{$var-prefix}alert-padding-x);
+    margin-bottom: var(--#{$var-prefix}alert-margin-bottom);
+    font-size: var(--#{$var-prefix}alert-font-size);
+    line-height: var(--#{$var-prefix}alert-line-height);
+    font-weight: var(--#{$var-prefix}alert-font-weight);
+    color: var(--#{$var-prefix}alert-color);
+    background-color: var(--#{$var-prefix}alert-bg);
+    border: var(--#{$var-prefix}alert-border);
+    @include border-radius(var(--#{$var-prefix}alert-border-radius));
+    box-shadow: var(--#{$var-prefix}alert-box-shadow);
+  }
+
+  %alert-sm {
+    @include alert-size($alert-padding-y-sm, $alert-padding-x-sm, $alert-font-size-sm, $alert-line-height-sm, $alert-height-sm, $alert-border-radius-sm);
+  }
+  
+  %alert-lg {
+    @include alert-size($alert-padding-y-lg, $alert-padding-x-lg, $alert-font-size-lg, $alert-line-height-lg, $alert-height-lg, $alert-border-radius);
+  }
+  
+//===== Alert Class =====================================
+.#{$class-prefix}alert {
+    @extend %alert;
+    .alert-icon+span,
+    span+.alert-icon {
+        margin-left: $alert-icon-margin-x;
+    }
+    .alert-icon {
+        font-size: var(--#{$var-prefix}alert-icon-font-size);
+        color: var(--#{$var-prefix}alert-icon-color);
+    }
+    .alert-close {        
+
+        @include border-radius(var(--#{$var-prefix}radius-circle));
+        @include position(absolute, var(--#{$var-prefix}alert-padding-y), var(--#{$var-prefix}alert-padding-x), n, n);
+        color: var(--#{$var-prefix}alert-color);   
+        background-color: transparent;
+        border: none;
+        &:hover {
+            background-color: var(--#{$var-prefix}alert-close-hover-bg);
+        }
+        &:active {
+            background-color: var(--#{$var-prefix}alert-close-active-bg);
+        }     
+    }
+}
+
+//----- Alerts sizes -----------------------------------
+.#{$class-prefix}alert-sm { @extend %alert-sm; }
+
+.#{$class-prefix}alert-lg { @extend %alert-lg; }
+
+//-----Alerts colors ----------------------------------
+@each $color, $value in $theme-colors {
+    %alert-#{$color},
+    .#{$class-prefix}alert-#{$color} {
+        @include alert-variant($color);
+    }
+
+    %alert-outline-#{$color},
+    .#{$class-prefix}alert-outline-#{$color} {
+        @include alert-outline-variant($color);
+    }
+
+    %alert-light-#{$color},
+    .#{$class-prefix}alert-light-#{$color} {
+        @include alert-light-variant($color);
+    }
+}

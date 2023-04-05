@@ -1,0 +1,277 @@
+<!-- components/Form-controls/Input-styles.html -->
+<div class="row">
+    <div class="col-4">
+        <h5>Input outline</h5>
+        <div class="form-group kv-form-control-wrapper">
+            <div class="kv-form-control-prefix">
+                <i class="far fa-search icon-mask"></i>
+            </div>
+            <input type="text" class="kv-form-control" id="" placeholder="kv-form-control">
+            <div class="kv-form-control-suffix">
+                <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-danger"><i class="far fa-times icon-btn"></i></button>
+            </div>
+        </div>
+        <div class="form-group kv-form-control-wrapper">
+            <div class="kv-form-control-prefix">
+                <i class="far fa-search icon-mask"></i>
+            </div>
+            <input type="text" class="kv-form-control" id="" placeholder="kv-form-control-lg">
+            <div class="kv-form-control-suffix">
+            <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-primary"><i class="far fa-pen icon-btn"></i></button>
+            <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-primary"><i class="far fa-plus icon-btn"></i></button>
+            </div>
+        </div>
+        <div class="form-group">
+            <select id="required" class="kv-form-control" multiple="multiple" data-placeholder="Select attendees...">
+			    <option>Steven White</option>
+			    <option>Nancy King</option>	
+			    <option>Nancy Davolio</option>
+			    <option>Robert Davolio</option>
+			    <option>Michael Leverling</option>
+			    <option>Andrew Callahan</option>
+			    <option>Michael Suyama</option>
+			    <option selected>Anne King</option>
+			    <option>Laura Peacock</option>
+			    <option>Robert Fuller</option>
+			    <option>Janet White</option>
+			    <option>Nancy Leverling</option>
+			    <option>Robert Buchanan</option>
+			    <option>Margaret Buchanan</option>
+			    <option selected>Andrew Fuller</option>
+			    <option>Anne Davolio</option>
+			    <option>Andrew Suyama</option>
+			    <option>Nige Buchanan</option>
+			    <option>Laura Fuller</option>
+			</select>
+			<script>
+            $(document).ready(function() {
+                // create MultiSelect from select HTML element
+                var required = $("#required").kendoMultiSelect().data("kendoMultiSelect");
+                var optional = $("#optional").kendoMultiSelect({
+                    autoClose: false
+                }).data("kendoMultiSelect");
+            });
+        </script>
+        </div>
+        <div class="form-group">
+            <input id="countries" class="kv-form-control kv-form-control-shadown"/>
+			<script>
+             $(document).ready(function () {
+                    var data = [
+                            "Albania",
+                            "Andorra",
+                            "Armenia",
+                            "Austria",
+                            "Azerbaijan",
+                            "Belarus",
+                            "Belgium",
+                            "Bosnia & Herzegovina",
+                            "Bulgaria",
+                            "Croatia",
+                            "Cyprus",
+                            "Czech Republic"
+                        ];
+
+                    //create AutoComplete UI component
+                    $("#countries").kendoAutoComplete({
+                        dataSource: data,
+                        filter: "startswith",
+                        close: "$event.preventDefault();",
+                        placeholder: "Select country...",
+                        separator: ", ",
+                        template: $.proxy(kendo.template("#= formatValue(data, this.val()) #"), $("#countries"))
+                    });
+                });
+                function formatValue(itemText, text) {
+                      var textMatcher = new RegExp(text, "ig");
+            
+                      return itemText.replace(textMatcher, function(match) {
+                        return "<strong class='kv-color-primary'>" + match + "</strong>";
+                      });
+                    }
+        </script>
+        </div>
+        <div class="form-group">
+            <input disabled="disabled" type="text" class="kv-form-control" id="" placeholder="form-control">
+        </div>
+    </div>
+    <div class="col-4">
+        <h5>Input shadow</h5>
+        <div class="form-group kv-form-control-wrapper kv-form-control-shadow-wrapper">
+            <div class="kv-form-control-prefix">
+                <i class="far fa-search icon-mask"></i>
+            </div>
+            <input type="text" class="kv-form-control" id="" placeholder="kv-form-control">
+            <div class="kv-form-control-suffix">
+                <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-danger"><i class="far fa-times icon-btn"></i></button>
+            </div>
+        </div>
+        <div class="form-group kv-form-control-wrapper kv-form-control-shadow-wrapper">
+            <div class="kv-form-control-prefix">
+                <i class="far fa-search icon-mask"></i>
+            </div>
+            <input type="text" class="kv-form-control" id="" placeholder="kv-form-control-lg">
+            <div class="kv-form-control-suffix">
+            <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-primary"><i class="far fa-pen icon-btn"></i></button>
+            <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-primary"><i class="far fa-plus icon-btn"></i></button>
+            </div>
+        </div>
+        <div class="form-group">
+            <select id="required-shadow" class="kv-form-control kv-form-control-shadow" multiple="multiple" data-placeholder="Select attendees...">
+			    <option>Steven White</option>
+			    <option>Nancy King</option>	
+			    <option>Nancy Davolio</option>
+			    <option>Robert Davolio</option>
+			    <option>Michael Leverling</option>
+			    <option>Andrew Callahan</option>
+			    <option>Michael Suyama</option>
+			    <option selected>Anne King</option>
+			    <option>Laura Peacock</option>
+			    <option>Robert Fuller</option>
+			    <option>Janet White</option>
+			    <option>Nancy Leverling</option>
+			    <option>Robert Buchanan</option>
+			    <option>Margaret Buchanan</option>
+			    <option selected>Andrew Fuller</option>
+			    <option>Anne Davolio</option>
+			    <option>Andrew Suyama</option>
+			    <option>Nige Buchanan</option>
+			    <option>Laura Fuller</option>
+			</select>
+			<script>
+            $(document).ready(function() {
+                // create MultiSelect from select HTML element
+                var required = $("#required-shadow").kendoMultiSelect().data("kendoMultiSelect");
+                var optional = $("#optional").kendoMultiSelect({
+                    autoClose: false
+                }).data("kendoMultiSelect");
+            });
+        </script>
+        </div>
+        <div class="form-group">
+            <input id="countries-shadow" class="kv-form-control kv-form-control-shadow"/>
+			<script>
+             $(document).ready(function () {
+                    var data = [
+                            "Albania",
+                            "Andorra",
+                            "Armenia",
+                            "Austria",
+                            "Azerbaijan",
+                            "Belarus",
+                            "Belgium",
+                            "Bosnia & Herzegovina",
+                            "Bulgaria",
+                            "Croatia",
+                            "Cyprus",
+                            "Czech Republic"
+                        ];
+
+                    //create AutoComplete UI component
+                    $("#countries-shadow").kendoAutoComplete({
+                        dataSource: data,
+                        filter: "startswith",
+                        placeholder: "Select country...",
+                        separator: ", "
+                    });
+                });
+        </script>
+        </div>
+        <div class="form-group">
+            <input disabled="disabled" type="text" class="kv-form-control kv-form-control-shadow" id="" placeholder="kv-form-control">
+        </div>
+    </div>
+    <div class="col-4">
+        <h5>Input line</h5>
+        <div class="form-group kv-form-control-wrapper kv-form-control-line-wrapper">
+            <div class="kv-form-control-prefix">
+                <i class="far fa-search icon-mask"></i>
+            </div>
+            <input type="text" class="kv-form-control" id="" placeholder="kv-form-control">
+            <div class="kv-form-control-suffix">
+                <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-danger"><i class="far fa-times icon-btn"></i></button>
+            </div>
+        </div>
+        <div class="form-group kv-form-control-wrapper kv-form-control-line-wrapper">
+            <div class="kv-form-control-prefix">
+                <i class="far fa-search icon-mask"></i>
+            </div>
+            <input type="text" class="kv-form-control" id="" placeholder="kv-form-control-lg">
+            <div class="kv-form-control-suffix">
+            <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-primary"><i class="far fa-pen icon-btn"></i></button>
+            <button type="button" class="kv-btn kv-btn-sm kv-btn-icon-only kv-btn-text-primary"><i class="far fa-plus icon-btn"></i></button>
+            </div>
+        </div>
+        <div class="form-group">
+            <select id="required-line" class="kv-form-control kv-form-control-line" multiple="multiple" data-placeholder="Select attendees...">
+			    <option>Steven White</option>
+			    <option>Nancy King</option>	
+			    <option>Nancy Davolio</option>
+			    <option>Robert Davolio</option>
+			    <option>Michael Leverling</option>
+			    <option>Andrew Callahan</option>
+			    <option>Michael Suyama</option>
+			    <option selected>Anne King</option>
+			    <option>Laura Peacock</option>
+			    <option>Robert Fuller</option>
+			    <option>Janet White</option>
+			    <option>Nancy Leverling</option>
+			    <option>Robert Buchanan</option>
+			    <option>Margaret Buchanan</option>
+			    <option selected>Andrew Fuller</option>
+			    <option>Anne Davolio</option>
+			    <option>Andrew Suyama</option>
+			    <option>Nige Buchanan</option>
+			    <option>Laura Fuller</option>
+			</select>
+			<script>
+            $(document).ready(function() {
+                // create MultiSelect from select HTML element
+                var required = $("#required-line").kendoMultiSelect({
+                    close: "$event.preventDefault();"
+                }).data("kendoMultiSelect");
+                var optional = $("#optional").kendoMultiSelect({
+                    autoClose: false
+                }).data("kendoMultiSelect");
+    
+                $("#get").click(function() {
+                    alert("Attendees:\n\nRequired: " + required.value() + "\nOptional: " + optional.value());
+                });
+            });
+        </script>
+        </div>
+        <div class="form-group">
+            <input id="countries-line" class="kv-form-control kv-form-control-line"/>
+			<script>
+             $(document).ready(function () {
+                    var data = [
+                            "Albania",
+                            "Andorra",
+                            "Armenia",
+                            "Austria",
+                            "Azerbaijan",
+                            "Belarus",
+                            "Belgium",
+                            "Bosnia & Herzegovina",
+                            "Bulgaria",
+                            "Croatia",
+                            "Cyprus",
+                            "Czech Republic"
+                        ];
+
+                    //create AutoComplete UI component
+                    $("#countries-line").kendoAutoComplete({
+                        dataSource: data,
+                        filter: "startswith",
+                        placeholder: "Select country...",
+                        separator: ", "
+                    });
+                });
+        </script>
+        </div>
+        <div class="form-group">
+            <input disabled="disabled" type="text" class="kv-form-control  kv-form-control-line" id="" placeholder="form-control-line">
+        </div>
+    </div>
+           
+</div>

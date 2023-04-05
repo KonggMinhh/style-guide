@@ -1,0 +1,29 @@
+@each $prop, $abbrev in (width: w, height: h) {
+    @each $size, $length in $view-sizes {
+        
+        @if $size == 0 {
+            %#{$abbrev}-#{$size},
+            .#{$abbrev}-#{$size} { #{$prop}: unitless($length) !important; } 
+            .min-#{$abbrev}-#{$size} { min-#{$prop}: unitless($length) !important; } 
+        }        
+        @else if $size != "auto" {
+            $viewport: #{v + $abbrev};
+            %min-#{$viewport}-#{$size},
+            .min-#{$viewport}-#{$size} { min-#{$prop}: unitless($length) * 1#{$viewport} !important; }
+            %#{$viewport}-#{$size},
+            .#{$viewport}-#{$size} { #{$prop}: unitless($length) * 1#{$viewport} !important; }
+        } 
+        @else {
+            %#{$abbrev}-#{$size},
+            .#{$abbrev}-#{$size} { #{$prop}: $length !important; } 
+        }  
+    }
+}
+
+
+%box-size-xs { @include box-size(var(--#{$var-prefix}size-xs)); }
+%box-size-sm { @include box-size(var(--#{$var-prefix}size-sm)); }
+%box-size-lg { @include box-size(var(--#{$var-prefix}size-md)); }
+
+%box-size-auto-sm { @include box-size-auto(var(--#{$var-prefix}size-sm)); }
+%box-size-auto-lg { @include box-size-auto(var(--#{$var-prefix}size-md)); }

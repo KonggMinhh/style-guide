@@ -1,0 +1,21 @@
+//===== Form label ===================================
+.#{$class-prefix}col-form-label {
+    --#{$var-prefix}input-padding-y: #{$input-padding-y + $input-border-width};
+    --#{$var-prefix}form-label-font-weight: var(--#{$var-prefix}body-font-weight);
+    --#{$var-prefix}form-label-color: var(--#{$var-prefix}body-color);
+    --#{$var-prefix}icon-mask-space-x: #{$spacer-md};
+    display: block;
+    padding-top: var(--#{$var-prefix}input-padding-y);
+    font-weight: var(--#{$var-prefix}form-label-font-weight);  
+    color: var(--#{$var-prefix}form-label-color);  
+    margin-bottom: 0;
+    > .icon-mask {
+        margin-right: var(--#{$var-prefix}icon-mask-space-x);
+    }
+}
+
+.#{$class-prefix}form-control-plaintext {
+    @extend %form-control;
+    --#{$var-prefix}input-padding-x: 0;
+    --#{$var-prefix}input-border-color: transparent;
+}

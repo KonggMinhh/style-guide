@@ -1,0 +1,47 @@
+//===== toasts Virtual Class ==========================
+%toast { 
+
+    --#{$var-prefix}toast-padding-x: #{$toast-padding-x};
+    --#{$var-prefix}toast-padding-y: #{$toast-padding-y};
+    --#{$var-prefix}toast-spacing: #{$toast-spacing};
+    --#{$var-prefix}toast-max-width: #{$toast-max-width};
+    --#{$var-prefix}toast-font-size: #{$toast-font-size};
+    --#{$var-prefix}toast-color: #{$toast-color};
+    --#{$var-prefix}toast-bg: #{$toast-background-color};
+    --#{$var-prefix}toast-border-width: #{$toast-border-width};
+    --#{$var-prefix}toast-border-color: #{$toast-border-color};
+    --#{$var-prefix}toast-border-radius: #{$toast-border-radius};
+    --#{$var-prefix}toast-header-color: #{$toast-header-color};
+    --#{$var-prefix}toast-header-bg: #{$toast-header-background-color};
+    --#{$var-prefix}toast-header-border-color: #{$toast-header-border-color};
+  
+    width: var(--#{$var-prefix}toast-max-width);
+    max-width: 100%;
+    font-size: var(--#{$var-prefix}toast-font-size);
+    color: var(--#{$var-prefix}toast-color);
+    pointer-events: auto;
+    background-color: var(--#{$var-prefix}toast-bg);
+    background-clip: padding-box;
+    border: var(--#{$var-prefix}toast-border-width) solid var(--#{$var-prefix}toast-border-color);
+    box-shadow: #{$toast-box-shadow-property} rgba(var(--#{$var-prefix}black-rgb), #{$toast-box-shadow-opacity});
+    @include border-radius(var(--#{$var-prefix}toast-border-radius));
+  }
+  
+//===== toast Class ===================================
+.#{$class-prefix}toast {
+    @extend %toast;
+    &.showing {
+        opacity: 0;
+      }
+    
+      &:not(.show) {
+        display: none;
+      }    
+}
+
+//-----toasts colors ----------------------------------
+@each $color, $value in $theme-colors {
+    .#{$class-prefix}toast-#{$color} {
+        @include toast-variant($color);
+    }
+}

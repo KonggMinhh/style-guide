@@ -1,0 +1,62 @@
+[
+    {
+        "category": "Buttons",
+        "order": 3
+    },
+    {
+        "category": "Form-controls",
+        "order": 4
+    },
+    {
+        "category": "Tables",
+        "order": 12
+    },
+    {
+        "category": "Form-check",
+        "order": 6
+    },
+    {
+        "category": "Colors",
+        "order": 0
+    },
+    {
+        "category": "Tags",
+        "order": 8
+    },
+    {
+        "category": "Dropdowns",
+        "order": 5
+    },
+    {
+        "category": "Typography",
+        "order": 2
+    },
+    {
+        "category": "Avatars",
+        "order": 11
+    },
+    {
+        "category": "Badges",
+        "order": 7
+    },
+    {
+        "category": "Alerts",
+        "order": 9
+    },
+    {
+        "category": "Modal",
+        "order": 10
+    },
+    {
+        "category": "Divider",
+        "order": 13
+    },
+    {
+        "category": "Pagination",
+        "order": 14
+    },
+    {
+        "category": "Logos",
+        "order": 1
+    }
+]

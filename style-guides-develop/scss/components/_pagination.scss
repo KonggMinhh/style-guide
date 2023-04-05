@@ -1,0 +1,54 @@
+//===== Pagination Virtual Class ==========================
+%pagination {
+  --#{$var-prefix}pagination-space: #{$pagination-space};
+  @extend %flex;
+  @extend %list-unstyled;
+}
+
+%page-item {
+  min-width: var(--#{$var-prefix}btn-size);
+  @extend %btn;
+  @extend %btn-outline-gray;
+}
+
+%page-item-active {
+  @extend %btn-primary;
+}
+
+//===== Pagination Class ==================================
+
+.#{$class-prefix}pagination {
+  @extend %pagination;
+  gap: var(--#{$var-prefix}pagination-space);
+}
+
+.#{$class-prefix}page-item {
+  @extend %page-item;
+
+  &.current {
+    @extend %page-item-active;
+  }
+
+  &:disabled,
+  &[disabled] {
+    @include component-disabled();
+  }
+}
+
+//----- Pagination Sizes ----------------------------------
+
+.#{$class-prefix}pagination-sm {
+  --#{$var-prefix}pagination-space: #{$pagination-space-sm};
+
+  .#{$class-prefix}page-item {
+    @extend %btn-sm;
+  }
+}
+
+.#{$class-prefix}pagination-lg {
+  --#{$var-prefix}pagination-space: #{$pagination-space-lg};
+
+  .#{$class-prefix}page-item {
+    @extend %btn-lg;
+  }
+}

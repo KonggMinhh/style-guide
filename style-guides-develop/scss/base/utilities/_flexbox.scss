@@ -1,0 +1,65 @@
+%flex {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+%inline-flex {
+    display: inline-flex;
+}
+
+%flex-column {
+    @extend %flex;
+    flex-direction: column;
+}
+
+//===== Vị trí Item trong một khối ==========================================================
+//  -----------------------------------------------
+//  |   top-left   |  top-center  |    top-right  |
+//  -----------------------------------------------
+//  | center-left  |    center    |  center-right |
+//  -----------------------------------------------
+//  | bottom-left  | bottom-center|  bottom-right |
+//  -----------------------------------------------
+@each $vertical, $vertical-value in (top: flex-start, center: center, bottom: flex-end) {
+    @each $horizontal, $horizontal-value in (left: flex-start, center: center, right: flex-end, between: space-between, around: space-around, evenly: space-evenly) {
+        @if ($vertical == $horizontal) {
+            %flex-#{$vertical},
+            .#{$class-prefix}flex-#{$vertical} {
+                @extend %flex;
+                align-items: $vertical-value;
+                justify-content: $vertical-value;
+            }
+            %inline-flex-#{$vertical},
+            .#{$class-prefix}inline-flex-#{$vertical} {
+                @extend %inline-flex;
+                align-items: $vertical-value;
+                justify-content: $vertical-value;
+            }
+            %flex-column-#{$vertical} {
+                @extend %flex;
+                flex-direction: column;
+                align-items: $vertical-value;
+                justify-content: $vertical-value;
+            }
+        }
+        @else {
+            %flex-#{$vertical}-#{$horizontal} {
+                @extend %flex;
+                align-items: $vertical-value;
+                justify-content: $horizontal-value;
+            }
+
+            %flex-column-#{$vertical}-#{$horizontal} {
+                @extend %flex;
+                flex-direction: column;
+                align-items: $horizontal-value;
+                justify-content: $vertical-value;
+            }
+        }
+    }
+}

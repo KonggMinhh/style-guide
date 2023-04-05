@@ -1,0 +1,90 @@
+//===== Tags Virtual Class ==========================
+%tag {
+
+    --#{$var-prefix}tag-padding-x: #{$tag-padding-x};
+    --#{$var-prefix}tag-padding-y: #{$tag-padding-y};
+    --#{$var-prefix}tag-font-size: #{$tag-font-size};
+    --#{$var-prefix}tag-line-height: #{$tag-line-height};
+    --#{$var-prefix}tag-font-weight: #{$tag-font-weight};
+    --#{$var-prefix}tag-color: var(--#{$var-prefix}body-color);
+    --#{$var-prefix}tag-bg: transparent;
+    --#{$var-prefix}tag-border-width: #{$tag-border-width};
+    --#{$var-prefix}tag-border-color: transparent;
+    --#{$var-prefix}tag-border-radius: #{$tag-border-radius};
+    --#{$var-prefix}tag-height: #{$tag-height};
+    --#{$var-prefix}icon-tag-margin-x: #{$icon-tag-margin-x};
+  
+    display: inline-flex;
+    padding: var(--#{$var-prefix}tag-padding-y) var(--#{$var-prefix}tag-padding-x);
+    font-size: var(--#{$var-prefix}tag-font-size);
+    line-height: var(--#{$var-prefix}tag-line-height);
+    font-weight: var(--#{$var-prefix}tag-font-weight);
+    min-height: var(--#{$var-prefix}tag-height);
+    color: var(--#{$var-prefix}tag-color);
+    align-items: center;
+    vertical-align: middle;
+    background-color: var(--#{$var-prefix}tag-bg);
+    border: var(--#{$var-prefix}tag-border-width) solid var(--#{$var-prefix}tag-border-color);
+    @include border-radius(var(--#{$var-prefix}tag-border-radius));
+
+  }
+
+  %tag-sm {
+    @include tag-size($tag-padding-y-sm, $tag-padding-x-sm, $tag-font-size-sm, $tag-line-height-sm, $tag-height-sm, $tag-border-radius-sm);
+  }
+  
+  %tag-lg {
+    @include tag-size($tag-padding-y-lg, $tag-padding-x-lg, $tag-font-size-lg, $tag-line-height-lg, $tag-height-lg, $tag-border-radius);
+  }
+  
+//===== Tag Class =====================================
+.#{$class-prefix}tag {
+    @extend %tag;
+    .tag-icon + span,
+    span + .tag-icon {
+        margin-left: var(--#{$var-prefix}icon-tag-margin-x);
+    }
+
+    .tag-close {        
+
+        @include border-radius(var(--#{$var-prefix}radius-circle));
+        color: var(--#{$var-prefix}tag-color);   
+        background-color: transparent;
+        border: none;
+        &:hover {
+            background-color: var(--#{$var-prefix}tag-close-hover-bg);
+        }
+        &:active {
+            background-color: var(--#{$var-prefix}tag-close-active-bg);
+        }     
+    }
+}
+
+//----- Tags sizes -----------------------------------
+.#{$class-prefix}tag-sm { @extend %tag-sm; }
+
+.#{$class-prefix}tag-lg { @extend %tag-lg; }
+
+//-----Tags colors -----------------------------------
+@each $color, $value in $theme-colors {
+    %tag-#{$color},
+    .#{$class-prefix}tag-#{$color} {
+        @include tag-variant($color);
+        @if $color =="gray" {
+            --#{$var-prefix}tag-bg: var(--#{$var-prefix}gray-400);
+        }
+    }
+
+    %tag-outline-#{$color},
+    .#{$class-prefix}tag-outline-#{$color} {
+        @include tag-outline-variant($color);
+    }
+
+    %tag-light-#{$color},
+    .#{$class-prefix}tag-light-#{$color} {
+        @include tag-light-variant($color);
+        @if $color =="gray" {
+            --#{$var-prefix}tag-bg: var(--#{$var-prefix}gray-50);
+        }
+    }
+}

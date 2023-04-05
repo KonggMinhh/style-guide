@@ -1,0 +1,259 @@
+//===== Form Check ===================================
+
+//----- Check/radio ----------------------------------
+.#{$class-prefix}form-check {
+  --#{$var-prefix}form-check-min-height: #{$form-check-min-height};
+  --#{$var-prefix}form-check-padding-start: #{$form-check-padding-start};
+  --#{$var-prefix}form-check-margin-bottom: #{$form-check-margin-bottom};
+  --#{$var-prefix}form-check-icon-font-size: var(--#{$var-prefix}icon-size-md);
+  display: block;
+  position: relative;
+  cursor: pointer;
+  min-height: var(--#{$var-prefix}form-check-min-height);
+  padding-left: var(--#{$var-prefix}form-check-padding-start);
+  margin-bottom: var(--#{$var-prefix}form-check-margin-bottom);
+}
+.#{$class-prefix}form-check-only {
+  --#{$var-prefix}form-check-padding-start: 0;
+  display: inline-block;
+  @include box-size(var(--#{$var-prefix}form-check-min-height));
+}
+
+.#{$class-prefix}form-check-input,
+.#{$class-prefix}form-check-text::before {
+  @include position(absolute, calc((var(--#{$var-prefix}form-check-min-height) - var(--#{$var-prefix}form-check-icon-font-size)) / 2), n, n, 0);
+  .#{$class-prefix}form-check-only & {
+    left: calc((var(--#{$var-prefix}form-check-min-height) - var(--#{$var-prefix}form-check-icon-font-size)) / 2);
+  }
+}
+
+.#{$class-prefix}form-check-input {  
+  
+  @include opacity(0);
+  appearance: none;
+  print-color-adjust: exact;
+
+  ~.#{$class-prefix}form-check-text::before {
+    --#{$var-prefix}check-color:              #{$form-check-input-color};
+    --#{$var-prefix}checkbox-content:         "\f0c8";    
+    --#{$var-prefix}radio-content:            "\f111";
+    --#{$var-prefix}checkbox-circle-content:  "\f111";
+    @extend .far;
+    font-size: var(--#{$var-prefix}form-check-icon-font-size);
+    color: var(--#{$var-prefix}check-color);
+
+    @at-root [type="checkbox"]#{&} {
+      content: var(--#{$var-prefix}checkbox-content);
+      @at-root .checkbox-circle#{&} {
+        content: var(--#{$var-prefix}checkbox-circle-content);       
+      }
+    }
+
+    @at-root [type="radio"]#{&} {
+      content: var(--#{$var-prefix}radio-content);
+    }
+
+    @at-root :checked#{&} {
+      @extend .fas;
+      --#{$var-prefix}check-color:              #{$form-check-input-checked-color};
+      --#{$var-prefix}checkbox-content:         "\f14a";
+      --#{$var-prefix}radio-content:            "\f192";
+      --#{$var-prefix}checkbox-circle-content:  "\f058";
+    }
+
+    @at-root :indeterminate#{&} {
+      @extend .fas;
+      --#{$var-prefix}check-color:              #{$form-check-input-checked-color};
+      --#{$var-prefix}checkbox-content:         "\f146";      
+      --#{$var-prefix}radio-content:            "\f056";
+      --#{$var-prefix}checkbox-circle-content:  "\f056";
+    }
+
+    @at-root :focus#{&} {
+      --#{$var-prefix}check-color:               #{$input-focus-border-color};
+      --#{$var-prefix}check-focus-box-shadow:    var(--#{$var-prefix}primary-rgb);
+      --#{$var-prefix}check-focus-border-radius: #{$check-focus-border-radius};
+      outline: 0;
+      box-shadow: 0 0 0 #{$form-check-input-focus-box-shadow-width} rgba(var(--#{$var-prefix}check-focus-box-shadow), .1);
+      background-color: rgba(var(--#{$var-prefix}check-focus-box-shadow), .1);
+      @include border-radius(var(--#{$var-prefix}check-focus-border-radius));
+    }
+
+    @at-root [disabled]#{&} {
+      pointer-events: none;
+      filter: none;
+      opacity: $form-check-input-disabled-opacity;
+    }
+  }
+
+  @at-root [disabled]#{&} {
+    ~.#{$class-prefix}form-check-text {
+      cursor: default;
+      opacity: $form-check-label-disabled-opacity;
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .#{$class-prefix}form-check-#{$color} {
+    .#{$class-prefix}form-check-input ~ .#{$class-prefix}form-check-text,
+    .#{$class-prefix}form-check-input ~ .#{$class-prefix}form-check-text::before {
+      color: var(--#{$var-prefix}#{$color});
+    }
+    .#{$class-prefix}form-check-input:focus ~ .#{$class-prefix}form-check-text::before {
+      --#{$var-prefix}check-focus-box-shadow: var(--#{$var-prefix}#{$color}-rgb);
+    }
+  }
+}
+
+//----- Switch -----------------------------------
+.#{$class-prefix}form-switch {
+  --#{$var-prefix}form-switch-before-bg: #{$form-switch-before-bg};
+  --#{$var-prefix}form-switch-after-bg: #{$form-switch-after-bg};
+  --#{$var-prefix}form-switch-box-shadow: #{$form-switch-after-box-shadow-outset-property} rgba(var(--#{$var-prefix}black-rgb), #{$form-switch-after-box-shadow-outset-opacity});
+  --#{$var-prefix}form-check-padding-start: 0;
+
+  .#{$class-prefix}form-check-input {
+    ~.#{$class-prefix}form-check-text {
+
+      &::before,
+      &::after {
+        content: "" !important;
+      }
+
+      &::before {
+        background-color: var(--#{$var-prefix}form-switch-before-bg);
+        @include border-radius($form-switch-radius);
+      }
+
+      &::after {
+        background-color: var(--#{$var-prefix}form-switch-after-bg);
+        @include border-radius($form-switch-radius);
+        @include transition($form-switch-transition);
+        box-shadow: var(--#{$var-prefix}form-switch-box-shadow);
+      }
+    }
+
+    &:checked {
+      ~.#{$class-prefix}form-check-text {
+        &::before {
+          background-color: $form-check-input-checked-color;
+        }
+
+        &::after {
+          background-color: $white;
+          @include transition($form-switch-transition);
+        }
+      }
+
+    }
+  }
+
+  &.#{$class-prefix}form-check-reverse {
+    .#{$class-prefix}form-check-input {
+      ~.#{$class-prefix}form-check-text {
+        &::before {
+          right: 0;
+          left: auto;
+          @include transition($form-switch-transition-reverse);
+        }
+
+        &::after {
+          left: auto;
+          @include transition($form-switch-transition-reverse);
+        }
+      }
+
+      &:checked {
+        ~.#{$class-prefix}form-check-text {
+          &::after {
+            left: auto;
+          }
+        }
+      }
+    }
+
+    .#{$class-prefix}form-check-input {
+      margin-left: 0;
+    }
+  }
+
+  .#{$class-prefix}form-check-input~.#{$class-prefix}form-check-text {
+    position: relative;
+    display: inline-block
+  }
+
+  @include form-switch-variant($form-switch-width, $form-switch-height, $form-switch-cursor-width);
+}
+
+.#{$class-prefix}form-switch-lg {
+  @include form-switch-variant($form-switch-width-lg, $form-switch-height-lg, $form-switch-cursor-width-lg);
+}
+
+//----- Switch text -----------------------------------
+
+.#{$class-prefix}form-check-inline {
+  display: inline-block;
+  margin-right: $form-check-inline-margin-end;
+}
+
+.#{$class-prefix}btn-check {
+  position: relative;
+  z-index: $zindex-middle;
+  &:hover,
+  &:focus-within {
+    z-index: $zindex-top;
+  }
+
+  .#{$class-prefix}btn-check-input {
+    @include opacity(0);
+    @include position(absolute, 0, n, n, 0);
+
+    &[type="radio"] {
+      +.#{$class-prefix}btn {
+        --#{$var-prefix}btn-border-radius: var(--#{$var-prefix}radius-circle);
+      }
+    }
+
+    &[disabled],
+    &:disabled {
+      +.#{$class-prefix}btn {
+        pointer-events: none;
+        filter: none;
+        opacity: $form-check-btn-check-disabled-opacity;
+      }
+    }
+  }
+}
+
+.#{$class-prefix}group-btn-check {
+  display: flex;
+
+  .#{$class-prefix}btn-check {
+    +.#{$class-prefix}btn-check {
+      margin-left: $btn-border-width*-1;
+    }
+
+    &:first-child:not(:last-child) {
+      .#{$class-prefix}btn-check-input+.#{$class-prefix}btn {
+        @include border-right-radius(0)
+      }
+    }
+
+    &:last-child:not(:first-child) {
+      .#{$class-prefix}btn-check-input+.#{$class-prefix}btn {
+        @include border-left-radius(0)
+      }
+    }
+
+    &:not(:first-child):not(:last-child) {
+      .#{$class-prefix}btn-check-input+.#{$class-prefix}btn {
+        @include border-radius(0)
+      }
+    }
+
+    .#{$class-prefix}btn-check-input:checked+.#{$class-prefix}btn {
+      z-index: $zindex-top;
+    }
+  }
+}

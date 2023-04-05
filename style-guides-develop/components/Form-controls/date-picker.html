@@ -1,0 +1,137 @@
+<div class="row">
+    <div class="col-4">
+        <div class="form-group">
+            <input id="dateinput" class="kv-form-control kv-form-control-sm" title="please enter date"/>
+        </div>
+        <div class="form-group">
+            <input id="timepicker" class="kv-form-control" value="10:00 AM" title="timepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="datepicker" class="kv-form-control kv-form-control-lg" value="10/10/2022" title="datepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="datetimepicker" class="kv-form-control" title="datetimepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="monthpicker" class="kv-form-control" value="November 2022" title="monthpicker"/>
+        </div>
+        <script>
+        $(document).ready(function () {
+            // create DateTimePicker from input HTML element
+            $("#dateinput").kendoDateInput({
+				label: "Enter a date"
+			});
+			$("#timepicker").kendoTimePicker();
+			 $("#datepicker").kendoDatePicker();
+
+            $("#datetimepicker").kendoDateTimePicker({
+                value: new Date(),
+                dateInput: true
+            });
+            $("#monthpicker").kendoDatePicker({
+                    // defines the start view
+                    start: "year",
+
+                    // defines when the calendar should return date
+                    depth: "year",
+
+                    // display month and year in the input
+                    format: "MMMM yyyy",
+
+                    // specifies that DateInput is used for masking the input element
+                    dateInput: true
+                });
+        });
+    </script>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <input id="dateinput-line" class="kv-form-control kv-form-control-sm kv-form-control-line" title="please enter date"/>
+        </div>
+        <div class="form-group">
+            <input id="timepicker-line" class="kv-form-control kv-form-control-line" value="10:00 AM" title="timepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="datepicker-line" class="kv-form-control kv-form-control-lg kv-form-control-line" value="10/10/2022" title="datepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="datetimepicker-line" class="kv-form-control kv-form-control-line" title="datetimepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="monthpicker-line" class="kv-form-control kv-form-control-line" value="November 2022" title="monthpicker"/>
+        </div>
+        <script>
+        $(document).ready(function () {
+            // create DateTimePicker from input HTML element
+            $("#dateinput-line").kendoDateInput({
+				label: "Enter a date"
+			});
+			$("#timepicker-line").kendoTimePicker();
+			 $("#datepicker-line").kendoDatePicker();
+
+            $("#datetimepicker-line").kendoDateTimePicker({
+                value: new Date(),
+                dateInput: true
+            });
+            $("#monthpicker-line").kendoDatePicker({
+                    // defines the start view
+                    start: "year",
+
+                    // defines when the calendar should return date
+                    depth: "year",
+
+                    // display month and year in the input
+                    format: "MMMM yyyy",
+
+                    // specifies that DateInput is used for masking the input element
+                    dateInput: true
+                });
+        });
+    </script>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <input id="dateinput-shadow" class="kv-form-control kv-form-control-sm kv-form-control-shadow" title="please enter date"/>
+        </div>
+        <div class="form-group">
+            <input id="timepicker-shadow" class="kv-form-control kv-form-control-shadow" value="10:00 AM" title="timepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="datepicker-shadow" class="kv-form-control kv-form-control-lg kv-form-control-shadow" value="10/10/2022" title="datepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="datetimepicker-shadow" class="kv-form-control kv-form-control-shadow" title="datetimepicker"/>
+        </div>
+        <div class="form-group">
+            <input id="monthpicker-shadow" class="kv-form-control kv-form-control-shadow" value="November 2022" title="monthpicker"/>
+        </div>
+        <script>
+        $(document).ready(function () {
+            // create DateTimePicker from input HTML element
+            $("#dateinput-shadow").kendoDateInput({
+				label: "Enter a date"
+			});
+			$("#timepicker-shadow").kendoTimePicker();
+			 $("#datepicker-shadow").kendoDatePicker();
+
+            $("#datetimepicker-shadow").kendoDateTimePicker({
+                value: new Date(),
+                dateInput: true
+            });
+            $("#monthpicker-shadow").kendoDatePicker({
+                    // defines the start view
+                    start: "year",
+
+                    // defines when the calendar should return date
+                    depth: "year",
+
+                    // display month and year in the input
+                    format: "MMMM yyyy",
+
+                    // specifies that DateInput is used for masking the input element
+                    dateInput: true
+                });
+        });
+    </script>
+    </div>
+</div>

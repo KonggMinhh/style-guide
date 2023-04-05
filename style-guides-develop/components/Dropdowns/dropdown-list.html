@@ -1,0 +1,65 @@
+<!-- components/Dropdowns/dropdown-list.html -->
+<div class="row">
+    <div class="col-4">
+        <div class="kv-list">
+           <a href="javascript:void(0)" class="kv-item is-active">Item 1</a>
+           <a href="javascript:void(0)" class="kv-item">Item 2</a>
+           <a href="javascript:void(0)" class="kv-item">Item 3</a>
+           <a href="javascript:void(0)" class="kv-item">Item 4</a>
+           <a href="javascript:void(0)" class="kv-item">Item 5</a>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="kv-list">
+           <a href="javascript:void(0)" class="kv-item is-active"><i class="far fa-home icon-item"></i>Item 1</a>
+           <a href="javascript:void(0)" class="kv-item"><i class="far fa-balance-scale icon-item"></i>Item 2</a>
+           <a href="javascript:void(0)" class="kv-item"><i class="far fa-chart-bar icon-item"></i>Item 3</a>
+           <a href="javascript:void(0)" class="kv-item"><i class="far fa-copy icon-item"></i>Item 4</a>
+           <a href="javascript:void(0)" class="kv-item"><i class="far fa-envelope-open icon-item"></i>Item 5</a>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <select id="size" class="kv-form-control">
+			    <option>Item 1</option>
+			    <option>Item 2</option>
+			    <option>Item 3</option>
+			    <option>Item 4</option>
+			</select>
+			
+        </div>
+        <div class="form-group">
+            <input id="dropdowntree" class="kv-form-control"/>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+<script>
+            $(document).ready(function() {
+                $("#size").kendoDropDownList({
+                    filter: "startswith"
+                });
+                // create kendoDropDownTree from input HTML element
+            $("#dropdowntree").kendoDropDownTree({
+                placeholder: "Select ...",
+                height: "auto",
+                close: "$event.preventDefault();",
+                dataSource: [
+                    {
+                        text: "Furniture", expanded: true, items: [
+                            { text: "Tables & Chairs" },
+                            { text: "Sofas" },
+                            { text: "Occasional Furniture" }
+                        ]
+                    },
+                    {
+                        text: "Decor", items: [
+                            { text: "Bed Linen" },
+                            { text: "Curtains & Blinds" },
+                            { text: "Carpets" }
+                        ]
+                    }
+                ]
+            });
+            });
+        </script>

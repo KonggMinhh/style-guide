@@ -1,0 +1,75 @@
+//===== Divider Virtual Class ==========================
+%divider {
+
+    --#{$var-prefix}divider-spacing: #{$divider-spacing};
+    --#{$var-prefix}divider-margin: #{$divider-margin} 0;
+    --#{$var-prefix}divider-color: inherit;
+    --#{$var-prefix}divider-border-size: #{$divider-border-size};
+    --#{$var-prefix}divider-border-width: var(--#{$var-prefix}divider-border-size) 0 0 0;
+    --#{$var-prefix}divider-border-style: #{$divider-border-style};
+    --#{$var-prefix}divider-border-color: #{$divider-border-color};
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: var(--#{$var-prefix}divider-color);
+    margin: var(--#{$var-prefix}divider-margin);
+
+    &::before,
+    &::after {
+        content: "";
+        width: 100%;
+        height: var(--#{$var-prefix}divider-border-size);
+        min-width: var(--#{$var-prefix}divider-border-size);
+        min-height: var(--#{$var-prefix}divider-border-size);        
+        border:var(--#{$var-prefix}divider-border-style) var(--#{$var-prefix}divider-border-color);
+        border-width: var(--#{$var-prefix}divider-border-width); 
+
+    }
+}
+
+
+//===== Divider Class =====================================
+.#{$class-prefix}divider {
+    @extend %divider;
+    &::before {
+        @at-root :not(.#{$class-prefix}divider-text-end):not(.#{$class-prefix}divider-text-center)#{&} { content: none; }
+        @at-root :not(:empty)#{&} { margin-right: var(--#{$var-prefix}divider-spacing); }
+    }
+    &::after {
+        @at-root .#{$class-prefix}divider-text-end#{&} { content: none; }
+        @at-root :not(:empty)#{&} { margin-left: var(--#{$var-prefix}divider-spacing); }
+    }
+
+    >* {
+        white-space: nowrap;
+        margin: 0;
+    }    
+}
+
+.#{$class-prefix}divider-dashed {
+    --#{$var-prefix}divider-border-style: dashed;
+}
+
+.#{$class-prefix}divider-vertical {
+    --#{$var-prefix}divider-margin: 0 #{$divider-margin};
+    display: inline-block;
+    width: auto;
+    &::before,
+    &::after {
+        --#{$var-prefix}divider-border-width: 0 0 0 var(--#{$var-prefix}divider-border-size);
+        width: var(--#{$var-prefix}divider-border-size);
+        height: 100%;    
+        margin: 0;        
+    }
+
+}
+
+
+//-----dividers colors ----------------------------------
+@each $color, $value in $theme-colors {
+    .#{$class-prefix}divider-#{$color} {
+        --#{$var-prefix}divider-color: var(--#{$var-prefix}#{$color});
+        --#{$var-prefix}divider-border-color: var(--#{$var-prefix}#{$color}-100);
+    }
+}

@@ -1,0 +1,65 @@
+//===== avatars Virtual Class ==========================
+%avatar {
+    --#{$var-prefix}avatar-line-height: #{$avatar-line-height};    
+    --#{$var-prefix}avatar-font-weight: var(--#{$var-prefix}font-weight-regular);
+    --#{$var-prefix}avatar-bg: #{$avatar-bg};
+    --#{$var-prefix}avatar-border-width: #{$avatar-border-width};
+    --#{$var-prefix}avatar-border-color: transparent;
+    --#{$var-prefix}avatar-border-radius: #{$avatar-border-radius-sm};
+    --#{$var-prefix}avatar-size: #{$avatar-size};
+
+    --#{$var-prefix}avatar-icon-color: #{$avatar-icon-color};
+    --#{$var-prefix}avatar-icon-font-size: #{$avatar-icon-font-size};
+  
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    line-height: var(--#{$var-prefix}avatar-line-height);
+    font-weight: var(--#{$var-prefix}avatar-font-weight);
+    width: var(--#{$var-prefix}avatar-size);
+    height: var(--#{$var-prefix}avatar-size);
+    color: var(--#{$var-prefix}avatar-color);    
+    overflow: hidden;
+    background-color: var(--#{$var-prefix}avatar-bg);
+    border: var(--#{$var-prefix}avatar-border-width) solid var(--#{$var-prefix}avatar-border-color);
+    @include border-radius(var(--#{$var-prefix}avatar-border-radius));
+    >.avatar-icon {
+        color: var(--#{$var-prefix}avatar-icon-color);
+        font-size: var(--#{$var-prefix}avatar-icon-font-size);
+        margin-top: 30%;
+    }
+    >img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+  }
+
+  %avatar-sm {
+    @include avatar-size($avatar-size-sm, $avatar-line-height-sm, $avatar-icon-font-size-sm, $avatar-border-radius-sm);
+  }
+  
+  %avatar-lg {
+    @include avatar-size($avatar-size-lg, $avatar-line-height-lg, $avatar-icon-font-size-lg, $avatar-border-radius-sm);
+  }
+
+  %avatar-xl {
+    @include avatar-size($avatar-size-xl, $avatar-line-height-lg, $avatar-icon-font-size-xl, $avatar-border-radius-sm);
+  }
+  
+//----- Avatars -----------------------------------
+.#{$class-prefix}avatar {
+    @extend %avatar;
+}
+
+//----- Avatars Sizes ------------------------------
+.#{$class-prefix}avatar-sm { @extend %avatar-sm; }
+
+.#{$class-prefix}avatar-lg { @extend %avatar-lg; }
+
+.#{$class-prefix}avatar-xl { @extend %avatar-xl; }

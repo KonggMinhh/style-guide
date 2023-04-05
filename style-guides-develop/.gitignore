@@ -1,0 +1,14 @@
+.idea/
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+css/*.map
+
+# Only exists if Bazel was run
+/bazel-out
+atomic-core/node_modules/
+# dependencies
+/node_modules

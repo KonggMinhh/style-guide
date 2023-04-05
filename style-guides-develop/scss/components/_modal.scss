@@ -1,0 +1,119 @@
+//===== Modal Virtual Class ==========================
+%modal-variables {
+  --#{$var-prefix}modal-zindex: #{$zindex-top};
+  --#{$var-prefix}modal-width: #{$modal-width};
+  --#{$var-prefix}modal-padding-x: #{$modal-inner-padding-x};
+  --#{$var-prefix}modal-padding-y: #{$modal-inner-padding-y};
+  --#{$var-prefix}modal-color: #{$modal-content-color};
+  --#{$var-prefix}modal-bg: #{$modal-content-bg};
+  --#{$var-prefix}modal-header-bg: #{$modal-header-bg};
+  --#{$var-prefix}modal-border-radius: #{$modal-content-border-radius};
+  --#{$var-prefix}modal-box-shadow: #{$modal-box-shadow-property} rgba(var(--#{$var-prefix}black-rgb), #{$modal-box-shadow-opacity});
+  --#{$var-prefix}modal-header-color: #{$modal-header-color};
+  --#{$var-prefix}header-btn-space: #{$spacer};
+  --#{$var-prefix}modal-footer-gap: #{$modal-footer-margin-between};
+  --#{$var-prefix}modal-footer-btn-min-width: #{$modal-footer-btn-min-width};
+}
+
+%modal-property {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--#{$var-prefix}modal-zindex);
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+}
+
+
+//===== Modal Class =====================================
+.modal {
+  @extend %modal-variables;
+  @extend %modal-property;
+}
+
+.modal-dialog {
+  max-width: var(--#{$var-prefix}modal-width);
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--#{$var-prefix}modal-color);
+  pointer-events: auto;
+  background-color: var(--#{$var-prefix}modal-bg);
+  background-clip: padding-box;
+  border: var(--#{$var-prefix}modal-border-width) solid var(--#{$var-prefix}modal-border-color);
+  @include border-radius(var(--#{$var-prefix}modal-border-radius));
+  box-shadow: var(--#{$var-prefix}modal-box-shadow);
+  outline: 0;
+}
+
+.#{$class-prefix}modal-header,
+.#{$class-prefix}modal-footer {
+  display: flex;
+  flex-shrink: 0;
+  border: none;
+  padding: var(--#{$var-prefix}modal-padding-y) var(--#{$var-prefix}modal-padding-x);
+}
+
+.#{$class-prefix}modal-header {
+  justify-content: space-between;
+  color: var(--#{$var-prefix}modal-header-color);
+  background-color: var(--#{$var-prefix}modal-header-bg);
+  @include border-radius(var(--#{$var-prefix}modal-border-radius));
+
+  .#{$class-prefix}modal-header-actions {
+      display: flex;
+      margin: calc(var(--#{$var-prefix}modal-padding-y) * -.35) calc(var(--#{$var-prefix}modal-padding-x) * -.5) calc(var(--#{$var-prefix}modal-padding-y) * -.35) auto;
+
+      .#{$class-prefix}btn {
+          margin-left: var(--#{$var-prefix}header-btn-space);
+      }
+  }
+
+  // .#{$class-prefix}btn-close {
+  //   @include button-text-variant(gray);
+  // }
+}
+
+.#{$class-prefix}modal-title {
+  margin-bottom: 0;
+}
+
+.#{$class-prefix}modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: var(--#{$var-prefix}modal-padding-y) var(--#{$var-prefix}modal-padding-x);
+}
+
+.#{$class-prefix}modal-footer {
+  flex-wrap: wrap;
+  align-items: center;
+  padding: calc(var(--#{$var-prefix}modal-padding-y) - var(--#{$var-prefix}modal-footer-gap) * .5) calc(var(--#{$var-prefix}modal-padding-x) - var(--#{$var-prefix}modal-footer-gap) * .5);
+  @include border-bottom-radius(var(--#{$var-prefix}modal-border-radius));
+
+  > .#{$class-prefix}btn,
+  .#{$class-prefix}modal-actions {
+      flex: 1 0 0;
+      text-align: right;
+
+      > .#{$class-prefix}btn {
+          margin: calc(var(--#{$var-prefix}modal-footer-gap) * .5);
+          min-width: var(--#{$var-prefix}modal-footer-btn-min-width);
+      }
+  }
+}
+
+
+//-----Modal colors ----------------------------------
+@each $color, $value in $theme-colors {
+  .#{$class-prefix}modal-#{$color} {
+      --#{$var-prefix}modal-header-bg: var(--#{$var-prefix}#{$color}-100);
+  }
+}

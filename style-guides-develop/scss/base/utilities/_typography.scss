@@ -1,0 +1,46 @@
+//----- Font-sizes -------------------------------------
+%heading {
+    margin-top: 0;
+    margin-bottom: $headings-margin-bottom;
+  }
+
+@each $type, $properties in $types {
+
+    %font-#{$type},
+    .#{$class-prefix}font-#{$type} {
+        @include typo-size($type, $types);
+    }
+    @if not ($type =="lg" or $type =="md" or $type =="sm" or $type =="xs") { // Chỉ có Headings
+
+        #{$type} {            
+            @extend %heading;
+            @extend %font-#{$type};
+            @include typo-weight($type, $types);
+        }
+    }
+}
+
+//----- Font-weight ------------------------------------
+@each $name, $value in $font-weights {
+    %font-#{$name},
+    .#{$class-prefix}font-#{$name} {
+        font-weight: var(--#{$var-prefix}font-weight-#{$name}) !important;
+    }
+}
+
+//----- Text-align -------------------------------------
+@each $align in $text-aligns {
+    %text-#{$align},
+    .#{$class-prefix}text-#{$align} {
+        text-align: $align !important;
+    }
+}
+
+//----- Text-transform ---------------------------------
+@each $value in $text-transforms {
+    %text-#{$value},
+    .#{$class-prefix}text-#{$value} {
+        text-transform: $value !important;
+    }
+}
+

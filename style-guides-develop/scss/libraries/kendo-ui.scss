@@ -1,0 +1,151 @@
+//Font-size/family ******************/
+.k-calendar-md,
+.k-treeview-md,
+.k-list-md {
+    font-family: var(--#{$var-prefix}body-font-family);
+    font-size: var(--#{$var-prefix}body-font-size);
+}
+.k-popup {
+    border: none;
+}
+.k-list-filter {
+    padding: 0;
+    width: auto !important;
+    margin-bottom: var(--#{$var-prefix}dropdown-padding-y);
+}
+.k-list-item {
+    &.k-focus {
+        box-shadow: none;
+    }
+}
+//Input/Picker ******************/
+.k-picker,
+.k-combobox,
+.k-multiselect {
+    &.#{$class-prefix}form-control {
+        --#{$var-prefix}input-padding-x:    0;
+    } 
+}
+.k-input-inner {
+    .#{$class-prefix}form-control:not(.k-picker)> &,
+    &.#{$class-prefix}form-control {
+        --#{$var-prefix}input-padding-x:    0;
+    }
+    .#{$class-prefix}form-control> &,
+    &.#{$class-prefix}form-control {
+        --#{$var-prefix}input-padding-x:    #{$input-padding-x};
+        --#{$var-prefix}input-padding-y:    calc(#{$input-padding-y - $input-border-width});      
+        --#{$var-prefix}input-height:       calc(#{$input-height} - #{$input-border-width * 2});  
+        padding: var(--#{$var-prefix}input-padding-y) var(--#{$var-prefix}input-padding-x);
+        border: none;
+        box-shadow: none;
+    }
+    .#{$class-prefix}form-control-sm> &,
+    &.#{$class-prefix}form-control-sm {
+        --#{$var-prefix}input-padding-x:    #{$input-padding-x-sm};
+        --#{$var-prefix}input-padding-y:    #{$input-padding-y-sm};
+        --#{$var-prefix}input-height:       calc(#{$input-height-sm - $input-border-width * 2});
+    }
+    .#{$class-prefix}form-control-lg> &,
+    &.#{$class-prefix}form-control-lg {
+        --#{$var-prefix}input-padding-x:    #{$input-padding-x-lg};
+        --#{$var-prefix}input-padding-y:    #{$input-padding-y-lg};
+        --#{$var-prefix}input-height:       calc(#{$input-height-lg - $input-border-width * 2});
+    }
+}
+.k-picker-solid,
+.k-input-solid {
+    display: inline-flex;
+    align-items: center;    
+    --#{$var-prefix}input-padding-y: 0;
+    &.k-focus,
+    &:focus-within {
+        background-color: var(--#{$var-prefix}input-bg);
+        border-color: var(--#{$var-prefix}input-border-color);
+    }
+    &:not(.#{$class-prefix}form-control-line) {
+        &:focus,
+        &.k-focus,
+        &:focus-within {
+            @include form-control-focus(false);
+        }
+    }
+    &.#{$class-prefix}form-control-line {
+        &:focus,
+        &.k-focus,
+        &:focus-within {
+            @include form-control-focus();
+            --#{$var-prefix}input-border-color: var(--#{$var-prefix}primary);
+        }
+    }
+}
+.k-picker-solid {
+    //--#{$var-prefix}input-padding-x: 0;
+    &:hover,
+    &.k-hover {
+        background-color: var(--#{$var-prefix}input-bg);
+        border-color: var(--#{$var-prefix}input-border-color);
+    }
+}
+.k-input {
+    @extend %form-control;
+    &-md {
+        .k-input-icon {
+            @include box-size(auto);
+            margin-left: calc(var(--#{$var-prefix}spacer-md)* -1 /2);
+            margin-right: var(--#{$var-prefix}spacer-md);
+        } 
+        .k-input-inner {
+            --#{$var-prefix}input-padding-x: 0; 
+            padding-left: var(--#{$var-prefix}input-padding-x);
+            padding-right: var(--#{$var-prefix}input-padding-x);
+        }       
+    }
+    .k-chip-list {
+        margin-left: calc(var(--#{$var-prefix}input-padding-x) * -1);
+    }
+}
+
+//K-button ******************/
+.k-input-icon,
+.k-button-icon,
+.k-chip-action .k-icon {
+    // font-family: var(--#{$var-prefix}font-fa);
+    // font-weight: 400;
+    // @extend %fa-font;
+    @extend .far;
+}
+.k-i-x-circle::before   { content: "\f00d"};
+.k-i-arrow-s::before    { content: "\f107"};
+.k-i-search::before     { content: "\f002"};
+.k-i-clock::before      { content: "\f017"};
+.k-i-calendar::before   { content: "\f783"};
+
+//K-button ******************/
+.k-button {
+    @extend %btn;
+    &-md { @extend %btn-sm}
+    &-solid-base {
+    @include button-text-variant(secondary);
+    }
+}
+//Chip ******************/
+.k-chip {
+    @extend %tag;
+    display: flex;
+    &-sm { @extend %tag-sm; }
+    &-lg { @extend %tag-lg; }
+
+    &-md {
+        .k-icon { font-size: var(--#{$var-prefix}icon-size-sm);}
+    }
+}
+.k-chip-solid-base {
+    @include tag-light-variant(secondary);
+}
+//Calendar ******************/
+//Treeview ******************/
+.k-treeview-md {
+    .k-treeview-leaf { flex: 1;}
+}
+

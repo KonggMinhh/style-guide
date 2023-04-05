@@ -1,0 +1,260 @@
+//===== Buttons Virtual Class ==========================
+%btn {
+
+    --#{$var-prefix}btn-padding-x: #{$btn-padding-x};
+    --#{$var-prefix}btn-padding-y: #{$btn-padding-y};
+    --#{$var-prefix}btn-font-family: #{$font-family-sans-serif};
+    --#{$var-prefix}btn-font-size: #{$btn-font-size};
+    --#{$var-prefix}btn-line-height: #{$btn-line-height};
+    --#{$var-prefix}btn-font-weight: #{$btn-font-weight};
+    --#{$var-prefix}btn-color: var(--#{$var-prefix}body-color);
+    --#{$var-prefix}btn-bg: transparent;
+    --#{$var-prefix}btn-border-width: #{$btn-border-width};
+    --#{$var-prefix}btn-border-color: transparent;
+    --#{$var-prefix}btn-border-radius: #{$btn-border-radius};
+    --#{$var-prefix}btn-size: #{$btn-height};
+    --#{$var-prefix}btn-box-shadow: #{$btn-box-shadow};
+    --#{$var-prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
+    --#{$var-prefix}btn-focus-box-shadow: 0 0 0 #{$input-btn-focus-width} rgba(var(--#{$var-prefix}btn-focus-shadow-rgb), .5);
+    --#{$var-prefix}btn-space: #{$btn-space};
+    --#{$var-prefix}icon-btn-margin-x: #{$icon-btn-margin-x};
+    --#{$var-prefix}icon-btn-size: #{$icon-btn-size};
+  
+    display: inline-block;
+    padding: var(--#{$var-prefix}btn-padding-y) var(--#{$var-prefix}btn-padding-x);
+    font-family: var(--#{$var-prefix}body-font-family);
+    font-size: var(--#{$var-prefix}btn-font-size);
+    line-height: var(--#{$var-prefix}btn-line-height);
+    font-weight: var(--#{$var-prefix}btn-font-weight);
+    min-height: var(--#{$var-prefix}btn-size);
+    color: var(--#{$var-prefix}btn-color);
+    text-align: center;
+    text-decoration: if($link-decoration ==none, null, none);
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--#{$var-prefix}btn-bg);
+    border: var(--#{$var-prefix}btn-border-width) solid var(--#{$var-prefix}btn-border-color);
+    @include border-radius(var(--#{$var-prefix}btn-border-radius));
+    .icon-btn {
+        font-size: var(--#{$var-prefix}icon-btn-size);
+    }
+  
+    &:hover {
+      text-decoration: if($link-hover-decoration ==underline, none, null);
+      color: var(--#{$var-prefix}btn-hover-color);
+      background-color: var(--#{$var-prefix}btn-hover-bg);
+      border-color: var(--#{$var-prefix}btn-hover-border-color, transparent);
+      @include transition(background-color .15s ease-in-out);
+    }
+  
+    .#{$class-prefix}btn-check-input:focus-visible+&,
+    &:focus-visible {
+      outline: 0;
+      background-color: var(--#{$var-prefix}btn-hover-bg);
+      border-color: var(--#{$var-prefix}btn-hover-border-color, transparent);
+      box-shadow: var(--#{$var-prefix}btn-focus-box-shadow);
+    }
+  
+    &:active,
+    &.active {
+      color: var(--#{$var-prefix}btn-active-color);
+      background-color: var(--#{$var-prefix}btn-active-bg);
+      border-color: var(--#{$var-prefix}btn-active-border-color, transparent);
+    }
+  
+    &:disabled,
+    &.disabled,
+    fieldset:disabled & {
+        @include component-disabled();
+        @include box-shadow(none);
+    }
+  }
+  
+  %btn-xs {
+    @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $btn-font-size-xs, $btn-line-height-xs, $btn-font-weight-xs, $btn-height-xs, $btn-border-radius-sm);
+  }
+  
+  %btn-sm {
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-font-weight-sm, $btn-height-sm, $btn-border-radius-sm);
+  }
+  
+  %btn-lg {
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-font-weight-lg, $btn-height-lg, $btn-border-radius);
+  }
+  
+  %btn-xl {
+    @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $btn-font-size-xl, $btn-line-height-xl, $btn-font-weight-xl, $btn-height-xl, $btn-border-radius-lg);
+  }
+  
+  %btn-xxl {
+    @include button-size($btn-padding-y-xxl, $btn-padding-x-xxl, $btn-font-size-xxl, $btn-line-height-xxl, $btn-font-weight-xxl, $btn-height-xxl, $btn-border-radius-lg);
+  }
+
+  %btn-icon-only {
+    --#{$var-prefix}btn-padding-x: 0;
+    --#{$var-prefix}btn-padding-y: 0;
+    --#{$var-prefix}btn-size: #{$btn-height};
+    @include box-size(var(--#{$var-prefix}btn-size));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+//===== Buttons Class ===================================
+.#{$class-prefix}btn {
+    @extend %btn;
+    
+    .icon-btn + span,
+    span + .icon-btn {
+        margin-left: var(--#{$var-prefix}icon-btn-margin-x);
+    }
+    &-block {
+        width: 100%;
+        & + & {
+            margin-top: var(--#{$var-prefix}btn-space);
+        }
+    }
+}
+
+//----- Buttons size ------------------------------------
+.#{$class-prefix}btn-xs {
+    @extend %btn-xs;
+}
+
+.#{$class-prefix}btn-sm {
+    @extend %btn-sm;
+}
+
+.#{$class-prefix}btn-lg {
+    @extend %btn-lg;
+}
+
+.#{$class-prefix}btn-xl {
+    @extend %btn-xl;
+}
+
+.#{$class-prefix}btn-xxl {
+    @extend %btn-xxl;
+}
+
+.#{$class-prefix}btn-circle {
+    --#{$var-prefix}btn-border-radius: var(--#{$var-prefix}radius-circle);
+}
+
+.#{$class-prefix}btn-icon-only {
+    @extend %btn-icon-only;
+
+    @each $size, $value in $box-sizes {
+        &.#{$class-prefix}btn-#{$size} {
+            --#{$var-prefix}btn-size: var(--#{$var-prefix}size-#{$size});
+        }
+    }
+
+    @each $size, $value in $icon-sizes {
+        &.#{$class-prefix}btn-#{$size} {
+            .icon-btn {
+                --#{$var-prefix}icon-btn-size: var(--#{$var-prefix}icon-size-#{$size});
+            }
+        }
+    }
+}
+
+//----- Buttons color -----------------------------------
+@each $color, $value in $theme-colors {
+
+    %btn-#{$color},
+    .#{$class-prefix}btn-#{$color},
+    .#{$class-prefix}hover-#{$color}:hover,
+    .#{$class-prefix}hover-#{$color}.k-state-hover,
+    .#{$class-prefix}hover-#{$color}:focus,
+    .#{$class-prefix}btn-check .#{$class-prefix}btn-check-input:checked+.#{$class-prefix}hover-#{$color},
+    .#{$class-prefix}btn-check .#{$class-prefix}btn-check-input:checked+.#{$class-prefix}hover-outline-#{$color},
+    .#{$class-prefix}btn-check .#{$class-prefix}btn-check-input:checked+.#{$class-prefix}hover-light-#{$color},
+    .#{$class-prefix}btn-check .#{$class-prefix}btn-check-input:checked+.active-#{$color},
+    .#{$class-prefix}active-#{$color}.k-state-active {
+        @include button-variant($color);
+        @if $color =="gray" {
+            --#{$var-prefix}btn-bg:         var(--#{$var-prefix}gray-300);
+            --#{$var-prefix}btn-hover-bg:   var(--#{$var-prefix}gray-350);
+            --#{$var-prefix}btn-active-bg:  var(--#{$var-prefix}gray-400);
+        }
+    }
+
+    %btn-outline-#{$color},
+    .#{$class-prefix}btn-outline-#{$color},
+    .#{$class-prefix}hover-outline-#{$color}:hover,
+    .#{$class-prefix}hover-outline-#{$color}.is-hover,
+    .#{$class-prefix}hover-outline-#{$color}:focus {
+        @include button-outline-variant($color);
+        @if $color =="gray" {
+            --#{$var-prefix}btn-border-color:           var(--#{$var-prefix}gray-200);
+            --#{$var-prefix}btn-hover-border-color:     var(--#{$var-prefix}gray-250);
+            --#{$var-prefix}btn-active-border-color:    var(--#{$var-prefix}gray-250);
+        }
+    }
+
+    %btn-ghost-#{$color},
+    .#{$class-prefix}btn-ghost-#{$color} {
+        @include button-ghost-variant($color);
+    }
+
+    %btn-light-#{$color},
+    .#{$class-prefix}btn-light-#{$color},
+    .#{$class-prefix}hover-light-#{$color}:hover,
+    .#{$class-prefix}hover-light-#{$color}.is-hover,
+    .#{$class-prefix}hover-light-#{$color}:focus {
+        @include button-light-variant($color);
+    }
+
+    %btn-text-#{$color},
+    .#{$class-prefix}btn-text-#{$color} {
+        @include button-text-variant($color);
+    }
+}
+
+.#{$class-prefix}btn-link {
+    --#{$var-prefix}btn-color:                var(--#{$var-prefix}link);
+    --#{$var-prefix}btn-bg:                   transparent;
+    --#{$var-prefix}btn-border-color:         transparent;
+  
+    --#{$var-prefix}btn-hover-color:          var(--#{$var-prefix}link-600);
+    --#{$var-prefix}btn-hover-bg:             transparent;
+    --#{$var-prefix}btn-hover-border-color:   transparent;
+    --#{$var-prefix}btn-active-color:         var(--#{$var-prefix}link-700);
+    --#{$var-prefix}btn-active-bg:            transparent;
+    --#{$var-prefix}btn-active-border-color:  transparent;
+    
+    --#{$var-prefix}btn-focus-shadow-rgb:     transparent;
+}
+
+//----- Group Buttons -----------------------------------
+.#{$class-prefix}btn-group {
+    display: flex;
+
+    .#{$class-prefix}btn {
+        +.#{$class-prefix}btn {
+            margin-left: $btn-border-width*-1;
+        }
+
+        &:first-child:not(:last-child) {
+            @include border-right-radius(0)
+        }
+
+        &:last-child:not(:first-child) {
+            @include border-left-radius(0)
+        }
+
+        &:not(:first-child):not(:last-child) {
+            @include border-radius(0)
+        }
+
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:active,
+        &.is-active {
+            z-index: $zindex-bottom;
+        }
+    }
+}

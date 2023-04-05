@@ -1,0 +1,48 @@
+//===== Form number Virtual Class ==========================
+%form-number {
+    --#{$var-prefix}form-number-padding-x: #{$form-number-padding-x};
+    display: block;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding: 0 var(--#{$var-prefix}form-number-padding-x);   
+}
+
+
+//----- form-number -----------------------------------
+.#{$class-prefix}form-number {
+    @extend %form-number;
+    > .#{$class-prefix}form-control {
+        @extend %form-control-line;
+        text-align: center
+    }
+    > .#{$class-prefix}btn {
+        @include position(absolute, 0, n, n, n);
+        &.down { left: 0; }
+        &.up { right: 0; }
+    }
+    &-subtext {
+        margin-top: var(--#{$var-prefix}spacer-sm);
+    }
+}
+
+.#{$class-prefix}form-number-sm {
+    --#{$var-prefix}form-number-padding-x: calc(var(--#{$var-prefix}size-sm) + var(--#{$var-prefix}spacer-sm));
+    > .#{$class-prefix}form-control {
+        @extend %form-control-sm;
+    }
+    > .#{$class-prefix}btn {
+        @extend %btn-sm;
+    }
+}
+
+.#{$class-prefix}form-number-lg {
+    --#{$var-prefix}form-number-padding-x: calc(var(--#{$var-prefix}size-lg) + var(--#{$var-prefix}spacer-sm));
+    > .#{$class-prefix}form-control {
+        @extend %form-control-lg;
+    }
+    > .#{$class-prefix}btn {
+        @extend %btn-lg;
+    }
+}
+

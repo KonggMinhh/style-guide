@@ -1,0 +1,24 @@
+%center-all {
+    @include position(absolute, 50%, n, n, 50%);
+    transform: translate(-50%, -50%);
+}
+
+%center-top {
+    @include position(absolute, 0, n, n, 50%);
+    transform: translateX(-50%);
+}
+
+%center-right {
+    @include position(absolute, 50%, 0, n, n);
+    transform: translateY(-50%);
+}
+
+%center-bottom {
+    @include position(absolute, n, n, 0, 50%);
+    transform: translateX(-50%);
+}
+
+%center-left {
+    @include position(absolute, 50%, n, n, 0);
+    transform: translateY(-50%);
+}

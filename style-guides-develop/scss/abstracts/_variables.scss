@@ -1,0 +1,676 @@
+// ======================================================
+// Abstracts :: Variables
+// ======================================================
+
+$var-prefix: kv-;
+$class-prefix: kv-;
+
+//===== Path ============================================
+$fonts-path: "../scss/fonts/";
+$img-path: "./assets/img/";
+$cdn-img-path: "https://cdn-app.kiotviet.vn/retailler/Content";
+$fa-font-path: "../node_modules/@fortawesome/fontawesome-pro/webfonts";
+
+//===== Color system ====================================
+//----- Color themes ------------------------------------
+$black:       #000000;
+$white:       #fff;
+$blue:        #0070F4;
+$accentblue:  #3AE3FF;
+$navy:        #002957;
+$indigo:      #6610f2;
+$purple:      #6f42c1;
+$pink:        #EF06BC;
+$red:         #E9380C;
+$orange:      #E9830C;
+$yellow:      #ffc107;
+$green:       #00B63E;
+$accentgreen: #00B63E;
+$teal:        #20c997;
+$cyan:        #0dcaf0;
+$gray:        #7F8A98; // #41464A;
+
+$primary:       $blue;
+$secondary:     $gray;
+$success:       $green;
+$info:          $teal;
+$warning:       $orange;
+$danger:        $red;
+$promotion:     $pink;
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "promotion":  $promotion,
+  "gray":       $gray
+);
+
+//----- Color common ------------------------------------
+$text-color:          var(--#{$var-prefix}gray-800);
+$body-color:          $text-color;
+$placeholder-color:   var(--#{$var-prefix}gray-200);
+$disabled-color:      var(--#{$var-prefix}gray-200);
+$body-bg:             var(--#{$var-prefix}white);
+$icon-action-color:   var(--#{$var-prefix}gray);
+$icon-mask-color:     var(--#{$var-prefix}gray-400);
+$link-color:          #0000FF;
+
+//===== Options =========================================
+$enable-grid-classes:         true;
+$enable-container-classes:    true;
+$enable-cssgrid:              false;
+$enable-negative-margins:     false;
+
+//===== Spacers =========================================
+$spacer: .4rem;
+$spacer-xs: $spacer * 0.5; //0.2rem
+$spacer-sm: $spacer; //0.4rem
+$spacer-md: $spacer * 2; //0.8rem
+$spacer-lg: $spacer * 4; //1.6rem
+$spacer-xl: $spacer * 6; //2.4rem
+$spacer-xxl: $spacer * 12; //4.8rem
+
+$spacers: (
+  "none": 0,
+  "xs":   $spacer-xs,
+  "sm":   $spacer-sm,
+  "md":   $spacer-md,
+  "lg":   $spacer-lg,
+  "xl":   $spacer-xl,
+  "xxl":  $spacer-xxl
+);
+
+$escaped-characters: (
+  ("<", "%3c"),
+  (":", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
+);
+
+//===== Grid ============================================
+
+//----- Grid breakpoints --------------------------------
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1366px,
+  3xl: 1600px,
+  4xl: 1920px
+);
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+//----- Grid containers ---------------------------------
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  3xl: 1560px,
+  4xl: 1880px
+);
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+//----- Grid columns ------------------------------------
+$grid-columns:        24;
+$grid-gutter-width:   1.5rem;
+$grid-row-columns:    12;
+
+//----- Container padding -------------------------------
+$container-padding-x: $grid-gutter-width;
+
+//===== Types ===========================================
+
+$font-family-sans-serif: Inter, Roboto, Helvetica, Arial, sans-serif;
+$font-fa: 'Font Awesome 6 Pro';
+$font-family-base: var(--#{$var-prefix}font-sans-serif);
+$font-size-root: 10px;
+
+$font-size-h1: 2.8rem;
+$font-size-h2: 2.4rem;
+$font-size-h3: 2.0rem;
+$font-size-h4: 1.8rem;
+$font-size-h5: 1.6rem;
+$font-size-h6: 1.4rem;
+
+$font-size-md: 1.3rem;
+$font-size-sm: 1.2rem;
+$font-size-xs: 1.0rem;
+
+$line-height-h1: 3.6rem;
+$line-height-h2: 3.2rem;
+$line-height-h3: 2.8rem;
+$line-height-h4: 2.4rem;
+$line-height-h5: 2.2rem;
+$line-height-h6: 2.0rem;
+
+$line-height-md: 2.0rem;
+$line-height-sm: 1.6rem;
+$line-height-xs: 1.6rem;
+
+$font-weight-black:     900;
+$font-weight-extrabold: 800;
+$font-weight-bold:      700;
+$font-weight-semibold:  600;
+$font-weight-medium:    500;
+$font-weight-base:      400;
+$font-weight-light:     300;
+
+$font-weights: (
+    "black":            $font-weight-black,
+    "extrabold":        $font-weight-extrabold,
+    "bold":             $font-weight-bold,
+    "semibold":         $font-weight-semibold,
+    "medium":           $font-weight-medium,
+    "regular":          $font-weight-base,
+    "light":            $font-weight-light
+);
+
+$types: (
+  h1: (
+    font-size: $font-size-h1,
+    line-height: $line-height-h1,
+    font-weight: var(--#{$var-prefix}font-weight-extrabold)
+  ),
+  h2: (
+    font-size: $font-size-h2,
+    line-height: $line-height-h2,
+    font-weight: var(--#{$var-prefix}font-weight-extrabold)
+  ),
+  h3: (
+    font-size: $font-size-h3,
+    line-height: $line-height-h3,
+    font-weight: var(--#{$var-prefix}font-weight-bold)
+  ),
+  h4: (
+    font-size: $font-size-h4,
+    line-height: $line-height-h4,
+    font-weight: var(--#{$var-prefix}font-weight-bold)
+  ),
+  h5: (
+    font-size: $font-size-h5,
+    line-height: $line-height-h5,
+    font-weight: var(--#{$var-prefix}font-weight-semibold)
+  ),
+  h6: (
+    font-size: $font-size-h6,
+    line-height: $line-height-h6,
+    font-weight: var(--#{$var-prefix}font-weight-semibold)
+  ),
+  lg: (
+    font-size: $font-size-h5,
+    line-height: $line-height-h5,
+  ),
+  md: (
+    font-size: $font-size-md,
+    line-height: $line-height-md,
+  ),
+  sm: (
+    font-size: $font-size-sm,
+    line-height: $line-height-sm
+  ),
+  xs: (
+    font-size: $font-size-xs,
+    line-height: $line-height-xs
+  )
+);
+
+
+$font-size:        $font-size-md;
+$font-size-lg:     $font-size-h5;
+$font-size-xl:     $font-size-h4;
+$font-size-xxl:    $font-size-h3;
+
+
+$line-height:      $line-height-md;
+$line-height-lg:   $line-height-h5;
+$line-height-xl:   $line-height-h4;
+$line-height-xxl:  $line-height-h3;
+
+$line-height-base: $line-height;
+
+$headings-margin-bottom: var(--#{$var-prefix}spacer-md);
+$headings-font-weight:   var(--#{$var-prefix}font-weight-medium);
+
+$paragraphs-margin-bottom: 1rem;
+
+//===== Utilities ==========================================
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex;
+$overflows: auto, hidden;
+$positions: static, relative, absolute, fixed, sticky;
+$user-selects: all, auto, none;
+$text-aligns: left, right, center, justify;
+$text-transforms: capitalize, uppercase, lowercase;
+$white-spaces: nowrap, normal;
+$view-sizes: (
+  0: 0%,
+  100: 100%,
+  auto: auto
+);
+
+//===== Size ===============================================
+$size-xs:   1.8rem;               // var(--#{$var-prefix}size-xs);
+$size-sm:   2.4rem;
+$size-md:   3.2rem;
+$size-lg:   4.0rem;
+$size-xl:   4.8rem;
+$size-xxl:  5.6rem;
+
+$box-sizes: (
+  "xs":  $size-xs,
+  "sm":  $size-sm,
+  "md":  $size-md,
+  "lg":  $size-lg,
+  "xl":  $size-xl,
+  "xxl": $size-xxl,
+);
+
+//----- Icons size --------------------------------------------
+$icon-size-xs:    1.2rem;         // var(--#{$var-prefix}icon-size-xs);
+$icon-size-sm:    1.4rem;
+$icon-size-md:    1.6rem;
+$icon-size-lg:    1.8rem;
+$icon-size-xl:    2.2rem;
+$icon-size-xxl:   2.8rem;
+
+$icon-sizes: (
+  "xs":  $icon-size-xs,
+  "sm":  $icon-size-sm,
+  "md":  $icon-size-md,
+  "lg":  $icon-size-lg,
+  "xl":  $icon-size-xl,
+  "xxl": $icon-size-xxl,
+);
+
+//----- Radius ------------------------------------------------
+$border-radius-sm:      .6rem;      // var(--#{$var-prefix}radius-sm);
+$border-radius-md:      .8rem;
+$border-radius-lg:      1.2rem;
+$border-radius-xl:      1.6rem;
+$border-radius-circle:  9999rem;
+
+$radius-sizes: (
+  "none":   0,
+  "sm":     $border-radius-sm,
+  "md":     $border-radius-md,
+  "lg":     $border-radius-lg,
+  "xl":     $border-radius-xl,
+  "circle": $border-radius-circle,
+);
+
+//----- Z-index -----------------------------------------------
+$zindex-top:    10000;
+$zindex-middle: $zindex-top - 1;
+$zindex-bottom: $zindex-middle - 1;
+
+//----- Links -------------------------------------------------
+$link-color:              $link-color;
+$link-decoration:         underline;
+$link-hover-decoration:   null;
+
+$component-disabled: .4;
+
+//===== Scrollbar =============================================
+
+$scrollbar-size: 6px;
+$scrollbar-thumb-bg: var(--#{$var-prefix}gray-300);
+
+//===== Forms =================================================
+$border-width: .1rem;
+
+//----- Form row ----------------------------------------------
+$form-row-margin-bottom: 1rem;
+
+//----- Input text + Btn --------------------------------------
+$input-font-size:         $font-size;
+$input-border-radius-sm:  var(--#{$var-prefix}radius-sm);
+$input-border-radius:     var(--#{$var-prefix}radius-md);
+$input-border-radius-lg:  var(--#{$var-prefix}radius-lg);
+
+$input-btn-focus-width:         .25rem;
+$input-btn-focus-color-opacity: .25;
+$input-btn-focus-color:         rgba(var(--#{$var-prefix}primary-rgb), $input-btn-focus-color-opacity);
+$input-btn-focus-blur:          0;
+$input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color;
+$input-btn-disabled:            $component-disabled;
+
+$input-border-color:                      var(--#{$var-prefix}gray-200);
+$input-focus-border-color:                var(--#{$var-prefix}primary);
+$input-focus-box-shadow-inset-property:   inset 0 -1px 0 0;
+$input-focus-box-shadow-outset-property:  0 2px 12px 0;
+$input-focus-box-shadow-outset-opacity:   .35;
+$input-border-width:                      $border-width;
+
+$input-line-height: $line-height-base;
+
+$input-color: var(--#{$var-prefix}body-color);
+$input-placeholder-color: $placeholder-color;
+
+$input-btn-font-size: $font-size;
+$input-btn-font-size-sm: $font-size;
+$input-btn-font-size-lg: $font-size;
+
+$input-height-sm:   var(--#{$var-prefix}size-sm);
+$input-height:      var(--#{$var-prefix}size-md);
+$input-height-lg:   var(--#{$var-prefix}size-lg);
+
+$input-padding-x-sm:  0.8rem;
+$input-padding-y-sm:  ($size-sm - $input-line-height)*0.5 - $input-border-width;
+$input-padding-x:     1.2rem;
+$input-padding-y:     ($size-md - $input-line-height)*0.5 - $input-border-width;
+$input-padding-x-lg:  1.6rem;
+$input-padding-y-lg:  ($size-lg - $input-line-height)*0.5 - $input-border-width;
+
+$btn-border-width: $border-width;
+
+$btn-font-size-xs:     $font-size-sm;
+$btn-font-size-sm:     $font-size-sm;
+$btn-font-size:        $font-size;
+$btn-font-size-lg:     $font-size;
+$btn-font-size-xl:     $font-size-lg;
+$btn-font-size-xxl:    $font-size-lg;
+
+$btn-line-height-xs:   $line-height-sm;
+$btn-line-height-sm:   $line-height-sm;
+$btn-line-height:      $line-height;
+$btn-line-height-lg:   $line-height;
+$btn-line-height-xl:   $line-height-lg;
+$btn-line-height-xxl:  $line-height-xl;
+
+$btn-height-xs:    var(--#{$var-prefix}size-xs);
+$btn-height-sm:    var(--#{$var-prefix}size-sm);
+$btn-height:       var(--#{$var-prefix}size-md);
+$btn-height-lg:    var(--#{$var-prefix}size-lg);
+$btn-height-xl:    var(--#{$var-prefix}size-xl);
+$btn-height-xxl:   var(--#{$var-prefix}size-xxl);
+
+$btn-font-weight-xs:    var(--#{$var-prefix}font-weight-regular);
+$btn-font-weight-sm:    var(--#{$var-prefix}font-weight-semibold);
+$btn-font-weight:       var(--#{$var-prefix}font-weight-semibold);
+$btn-font-weight-lg:    var(--#{$var-prefix}font-weight-semibold);
+$btn-font-weight-xl:    var(--#{$var-prefix}font-weight-semibold);
+$btn-font-weight-xxl:   var(--#{$var-prefix}font-weight-semibold);
+
+$btn-padding-x-xs:    0.3rem;
+$btn-padding-y-xs:    ($size-xs - $btn-line-height-xs)*0.5 - $btn-border-width;
+$btn-padding-x-sm:    0.5rem;
+$btn-padding-y-sm:    ($size-sm - $btn-line-height-sm)*0.5 - $btn-border-width;
+$btn-padding-x:       1.2rem;
+$btn-padding-y:       ($size-md - $btn-line-height)*0.5 - $btn-border-width;
+$btn-padding-x-lg:    1.6rem;
+$btn-padding-y-lg:    ($size-lg - $btn-line-height-lg)*0.5 - $btn-border-width;
+$btn-padding-x-xl:    2.2rem;
+$btn-padding-y-xl:    ($size-xl - $btn-line-height-xl)*0.5 - $btn-border-width;
+$btn-padding-x-xxl:   2.8rem;
+$btn-padding-y-xxl:   ($size-xxl - $btn-line-height-xxl)*0.5 - $btn-border-width;
+
+$input-textarea-padding-x:  1rem;
+$input-textarea-padding-y: .8rem;
+
+$btn-box-shadow:        none;
+$btn-active-box-shadow: none;
+$btn-disabled-opacity:  $component-disabled;
+$btn-space:             var(--#{$var-prefix}spacer-md);
+$icon-btn-margin-x:     var(--#{$var-prefix}spacer-md);
+$icon-btn-size:         var(--#{$var-prefix}icon-size-md);
+
+$btn-border-radius:     var(--#{$var-prefix}radius-md);
+$btn-border-radius-sm:  var(--#{$var-prefix}radius-sm);
+$btn-border-radius-lg:  var(--#{$var-prefix}radius-lg);
+
+//----- Form number ----------------------------------------
+$form-number-spacing: var(--#{$var-prefix}spacer-sm);
+$form-number-padding-x: calc(var(--#{$var-prefix}size-md) + #{$form-number-spacing});
+
+//----- Dropdown -------------------------------------------
+$dropdown-padding-x:            .8rem;
+$dropdown-padding-y:            .8rem;
+$dropdown-border-radius:        var(--#{$var-prefix}radius-xl);
+$dropdown-border-width:         .1rem;
+$dropdown-border-color:         var(--#{$var-prefix}gray-50);
+$dropdown-box-shadow-property:  0 8px 20px 0;
+$dropdown-box-shadow-opacity:   0.25;
+
+$dropdown-item-padding-x:       .8rem;
+$dropdown-item-padding-y:       1rem;
+$dropdown-item-border-radius:   .8rem;
+$dropdown-item-font-weight:     var(--#{$var-prefix}font-weight-medium);
+
+$dropdown-item-icon-color:      var(--#{$var-prefix}body-color);
+
+//----- Form check ----------------------------------------
+// Check/Radio
+$form-check-input-width:                  1.8rem;
+$form-check-input-space:                  1.2rem;
+$form-check-min-height:                   $line-height-base;
+$form-check-padding-start:                $form-check-input-width + $form-check-input-space;
+$form-check-margin-bottom:                1rem;
+
+$form-check-input-bg:                     var(--#{$var-prefix}white);
+$form-check-input-color:                  var(--#{$var-prefix}gray-400);
+$form-check-input-focus-box-shadow:       $input-btn-focus-box-shadow;
+$form-check-input-focus-box-shadow-width: .55rem;
+$check-focus-border-radius:               var(--#{$var-prefix}radius-circle);
+
+$form-check-input-checked-color:          var(--#{$var-prefix}primary);
+
+$form-check-input-disabled-opacity:       $component-disabled;
+$form-check-label-disabled-opacity:       $form-check-input-disabled-opacity;
+$form-check-btn-check-disabled-opacity:   $btn-disabled-opacity;
+
+$form-check-inline-margin-end:    1rem;
+
+// Check switch
+$form-switch-width:               3.2rem;
+$form-switch-height:              1.4rem;
+$form-switch-cursor-width:        1.8rem;
+
+$form-switch-width-lg:            4rem;
+$form-switch-height-lg:           1.8rem;
+$form-switch-cursor-width-lg:     2.4rem;
+
+$form-switch-before-bg:                         var(--#{$var-prefix}gray-200);
+$form-switch-after-bg:                          var(--#{$var-prefix}white);
+$form-switch-after-box-shadow-outset-property:  0 1px 3px 0;
+$form-switch-after-box-shadow-outset-opacity:   .4;
+
+$form-switch-radius:              var(--#{$var-prefix}radius-circle);
+$form-switch-transition:          left .15s ease-in-out;
+$form-switch-transition-reverse:  right .15s ease-in-out;
+
+$form-switch-focus-color:         $input-focus-border-color;
+$form-switch-checked-color:       var(--#{$var-prefix}white);
+
+$row-gutters: ( 2, 3, 5, 15, 20, 22, 23, 30);
+$form-labels-width: (60, 70, 80, 90, 95, 100, 110, 120, 140, 150);
+
+//===== Tags =============================================
+$tag-focus-width:         .25rem;
+$tag-focus-color-opacity: .25;
+$tag-focus-blur:          0;
+$tag-border-width:        $border-width;
+
+$tag-font-size-sm:     $font-size-sm;
+$tag-font-size:        $font-size-sm;
+$tag-font-size-lg:     $font-size;
+
+$tag-line-height-sm:   $line-height-sm;
+$tag-line-height:      $line-height-sm;
+$tag-line-height-lg:   $line-height;
+
+$tag-font-weight:      var(--#{$var-prefix}font-weight-regular);
+
+$tag-height-sm:    $size-xs;
+$tag-height:       $size-sm;
+$tag-height-lg:    $size-md;
+
+$tag-padding-x-sm:    0.3rem;
+$tag-padding-y-sm:    ($tag-height-sm - $tag-line-height-sm)*0.5 - $tag-border-width;
+$tag-padding-x:       .6rem;
+$tag-padding-y:       ($tag-height - $tag-line-height)*0.5 - $tag-border-width;
+$tag-padding-x-lg:    .8rem;
+$tag-padding-y-lg:    ($tag-height-lg - $tag-line-height-lg)*0.5 - $tag-border-width;
+
+$icon-tag-margin-x:     .4rem;
+
+$tag-border-radius-sm:  var(--#{$var-prefix}radius-md);
+$tag-border-radius:     var(--#{$var-prefix}radius-lg);
+
+//===== Divider ============================================
+$divider-spacing: 2.5rem;
+$divider-margin: 1rem;
+$divider-border-size: $border-width;
+$divider-border-style: solid;
+$divider-border-color: var(--#{$var-prefix}gray-100);
+
+//===== Badges =============================================
+$badge-focus-width:         .25rem;
+$badge-focus-color-opacity: .25;
+$badge-focus-blur:          0;
+$badge-border-width:        $border-width;
+
+$badge-font-size-sm:     $font-size-sm;
+$badge-font-size:        $font-size-sm;
+
+$badge-line-height-sm:   $line-height-sm;
+$badge-line-height:      $line-height-sm;
+
+$badge-height-sm:    $size-xs;
+$badge-height:       $size-sm;
+$badge-dot-height:    .8rem;
+
+$badge-padding-x-sm:    0.3rem;
+$badge-padding-y-sm:    ($badge-height-sm - $badge-line-height-sm)*0.5 - $badge-border-width;
+$badge-padding-x:       .6rem;
+$badge-padding-y:       ($badge-height - $badge-line-height)*0.5 - $badge-border-width;
+
+$badge-box-shadow:        none;
+$badge-active-box-shadow: none;
+$badge-disabled-opacity:  $component-disabled;
+
+$badge-border-radius: var(--#{$var-prefix}radius-circle);
+
+//===== Avatars =============================================
+$avatar-bg:             var(--#{$var-prefix}gray-50);
+$avatar-icon-color:     var(--#{$var-prefix}gray-100);
+$avatar-border-width:   $border-width;
+
+$avatar-line-height-sm:   $line-height-xs;
+$avatar-line-height:      $line-height-sm;
+$avatar-line-height-lg:   $line-height-sm;
+
+$avatar-size-sm:    $size-md;
+$avatar-size:       $size-lg;
+$avatar-size-lg:    5.6rem;
+$avatar-size-xl:    7.8rem;
+
+$avatar-icon-font-size-sm:    2.2rem;
+$avatar-icon-font-size:       2.8rem;
+$avatar-icon-font-size-lg:    3.8rem;
+$avatar-icon-font-size-xl:    5.8rem;
+
+$avatar-border-radius-sm:   1.2rem;
+$avatar-border-radius:      1.6rem;
+$avatar-border-radius-lg:   2rem;
+$avatar-border-radius-xl:   2.8rem;
+
+//===== Alerts =============================================
+$alert-box-shadow-property:  0 1px 2px 0;
+$alert-box-shadow-opacity:   .15;
+$alert-border-width:         $border-width;
+
+$alert-font-size-sm:     $font-size-sm;
+$alert-font-size:        $font-size-sm;
+$alert-font-size-lg:     $font-size;
+
+$alert-line-height-sm:   $line-height-sm;
+$alert-line-height:      $line-height-sm;
+$alert-line-height-lg:   $line-height;
+
+$alert-font-weight:      var(--#{$var-prefix}font-weight-regular);
+
+$alert-height-sm:    $size-xs;
+$alert-height:       $size-sm;
+$alert-height-lg:    $size-md;
+
+$alert-padding-x-sm:    0.8rem;
+$alert-padding-y-sm:    0.8rem;
+$alert-padding-x:       1.2rem;
+$alert-padding-y:       1.2rem;
+$alert-padding-x-lg:    1.8rem;
+$alert-padding-y-lg:    1.8rem;
+$alert-margin-bottom:   1rem;
+
+$alert-icon-margin-x:     1.2rem;
+$alert-icon-font-size:    var(--#{$var-prefix}icon-size-md);
+
+$alert-border-radius-sm:  var(--#{$var-prefix}radius-md);
+$alert-border-radius:     var(--#{$var-prefix}radius-lg);
+$alert-border-radius-lg:  var(--#{$var-prefix}radius-lg);
+
+//===== Toast =============================================
+$toast-max-width:                   35rem;
+$toast-padding-x:                   1.6rem;
+$toast-padding-y:                   1.6rem;
+$toast-font-size:                   $font-size-sm;
+$toast-color:                       null;
+$toast-background-color:            rgba(var(--#{$var-prefix}white-rgb), .85);
+$toast-border-width:                $border-width;
+$toast-border-color:                $input-border-color;
+$toast-border-radius:               var(--#{$var-prefix}radius-md);
+$toast-box-shadow-property:         0 1px 2px 0;
+$toast-box-shadow-opacity:          .15;
+$toast-spacing:                     $container-padding-x;
+
+$toast-header-color:                var(--#{$var-prefix}body-color);
+$toast-header-background-color:     rgba(var(--#{$var-prefix}white-rgb), .85);
+$toast-header-border-color:         rgba(var(--#{$var-prefix}black-rgb), .05);
+
+//===== Modal =============================================
+$modal-width:                       50rem;
+$modal-inner-padding-x:             2.4rem;
+$modal-inner-padding-y:             1.6rem;
+
+$modal-content-color:               null;
+$modal-content-bg:                  var(--#{$var-prefix}white);
+$modal-content-border-radius:       var(--#{$var-prefix}radius-xl);
+
+$modal-box-shadow-property:         0 12px 32px 0;
+$modal-box-shadow-opacity:          0.24;
+
+$modal-backdrop-bg:                 var(--#{$var-prefix}black);
+$modal-backdrop-opacity:            .5;
+
+$modal-header-color:                var(--#{$var-prefix}gray-800);
+$modal-header-bg:                   transparent;
+
+$modal-footer-margin-between:       var(--#{$var-prefix}spacer-md);
+$modal-footer-btn-min-width:         10rem;
+
+//===== Pagination ==========================================
+$pagination-space-sm: var(--#{$var-prefix}spacer-sm);
+$pagination-space:    var(--#{$var-prefix}spacer-md);
+$pagination-space-lg: var(--#{$var-prefix}spacer-md);
+
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+$utilities-colors: $theme-colors-rgb;
+
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
+
+$gutters: $spacers;
+
+
+
+
+
+
